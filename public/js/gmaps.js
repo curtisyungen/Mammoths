@@ -189,14 +189,15 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
+
+            // Reset end icon
+            if (endIcon != null) {
+                endIcon.setMap(null);
+            }
+            endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
         });
 
-    // Reset end icon
-    if (endIcon != null) {
-        endIcon.setMap(null);
-    }
-    endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
-    console.log("Way Points: " + wayPoints);
+
 }
 
 // API CALLS
