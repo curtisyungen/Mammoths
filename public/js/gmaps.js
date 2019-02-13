@@ -80,7 +80,7 @@ function initMap() {
 
         // If this is the first point, put a marker there
         if (wayPoints.length == 1) {
-            icon = getStartIcon(wayPoints[0].location);
+            icon = getIcon(wayPoints[0].location, "start");
         }
 
         // If at least one wayPoint present, calculate route
@@ -123,19 +123,23 @@ function toggleMapBoxBtns(key) {
 // GET START ICON
 // ======================================================
 
-function getStartIcon(position) {
+function getIcon(position, key) {
 
-    // Google libraries of map marker icons
-    var startIcon = "http://maps.google.com/mapfiles/arrow.png";
+    switch (key) {
+        case "start": iconImg = "http://maps.google.com/mapfiles/arrow.png"; break;
+        case "end": iconImg = "http://www.google.com/mapfiles/dd-end.png"; break;
+        default: "";
+    }
 
     icon = new google.maps.Marker({
         position: position,
-        icon: startIcon,
+        icon: iconImg,
         map: map
     });
 
     return icon;
 }
+
 
 // CALCULATE AND DISPLAY ROUTE
 // ======================================================
@@ -282,7 +286,7 @@ function loadRoute(event) {
         iconLocation = JSON.parse(response.icon);
 
         // Set an icon at loaded location
-        getStartIcon(iconLocation);
+        getIcon(iconLocation, "start");
 
         // Draw route on map
         calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
