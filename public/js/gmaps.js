@@ -278,7 +278,12 @@ function saveRoute(event) {
     // *** Move into API callback function
     setConfirmMsg("save");
 
-    displayPathElevation(wayPoints, elevator, map);
+    var path = [];
+    for (var i=0; i<wayPoints.length; i++) {
+        path.push(wayPoints[i].location);
+    }
+
+    displayPathElevation(path, elevator, map);
 }
 
 // "ROUTE SAVED" CONFIRMATION MESSAGE
