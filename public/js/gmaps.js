@@ -25,6 +25,9 @@ console.log("userid" + user.userId);
 // INITIALIZE MAP
 // ======================================================
 
+// Load the Visualization API and the columnchart package.
+google.load('visualization', '1', { packages: ['columnchart'] });
+
 function initMap() {
 
     // Map style settings
@@ -109,7 +112,7 @@ function initMap() {
     $("#loopRoute").on("click", loopRoute);
 }
 
-function displayPathElevation(path, elevator, map) {
+function displayPathElevation(path, elevator) {
     elevator.getElevationAlongPath({
         "path": path,
         "samples": 256
@@ -279,11 +282,11 @@ function saveRoute(event) {
     setConfirmMsg("save");
 
     var path = [];
-    for (var i=0; i<wayPoints.length; i++) {
+    for (var i = 0; i < wayPoints.length; i++) {
         path.push(wayPoints[i].location);
     }
 
-    displayPathElevation(path, elevator, map);
+    displayPathElevation(path, elevator);
 }
 
 // "ROUTE SAVED" CONFIRMATION MESSAGE
@@ -310,7 +313,7 @@ function loopRoute() {
     var length = reverseWayPoints.length; // So that length doesn't update in for loop
 
     // Add reversed way points onto route
-    for (var i=0; i<length; i++) {
+    for (var i = 0; i < length; i++) {
         wayPoints.push(reverseWayPoints[i]);
     }
 
