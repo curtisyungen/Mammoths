@@ -114,6 +114,7 @@ function toggleMapBoxBtns(key) {
     $("#undoLast").disabled = key;
     $("#loopRoute").disabled = key;
     $("#clearRoute").disabled = key;
+    console.log($("#saveRoute").disabled);
 }
 
 // GET START ICON
