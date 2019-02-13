@@ -5,7 +5,7 @@ var directionsService;
 var directionsDisplay;
 var wayPoints;
 var distance;
-var icon;
+var startIcon;
 var endIcon;
 var map;
 
@@ -81,14 +81,17 @@ function initMap() {
 
         // If this is the first point, put a marker there
         if (wayPoints.length == 1) {
-            icon = getIcon(wayPoints[0].location, "start");
+            icon = getStartIcon(wayPoints[0].location);
         }
 
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
 
-            // Display End Icon for last way point
-            endIcon = getIcon(wayPoints[wayPoints.length-1].location, "end");
+            // Refresh endIcon position to last point
+            if (endIcon != null) {
+                endIcon.setMap(null);
+                getEndIcon(wayPoints[wayPoints.length-1].location);
+            }
 
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
@@ -128,21 +131,35 @@ function toggleMapBoxBtns(key) {
 // GET START ICON
 // ======================================================
 
-function getIcon(position, key) {
+function getStartIcon(position) {
 
-    switch (key) {
-        case "start": iconImg = "http://maps.google.com/mapfiles/arrow.png"; break;
-        case "end": iconImg = "http://www.google.com/mapfiles/dd-end.png"; break;
-        default: "";
-    }
+    // Google libraries of map marker icons
+    var startIconImg = "http://maps.google.com/mapfiles/arrow.png";
 
-    icon = new google.maps.Marker({
+    startIcon = new google.maps.Marker({
         position: position,
-        icon: iconImg,
+        icon: startIconImg,
         map: map
     });
 
-    return icon;
+    return startIcon;
+}
+
+// GET END ICON
+// ======================================================
+
+function getEndIcon(position) {
+
+    // Google libraries of map marker icons
+    endIconImg = "http://www.google.com/mapfiles/dd-end.png";
+
+    endIcon = new google.maps.Marker({
+        position: position,
+        icon: endIconImg,
+        map: map
+    });
+
+    return endIcon;
 }
 
 
@@ -218,7 +235,8 @@ function saveRoute(event) {
         name: routeName,
         distance: distance,
         wayPoints: JSON.stringify(wayPoints),
-        icon: JSON.stringify(icon.position),
+        startIcon: JSON.stringify(startIcon.position),
+        endIcon: JSON.stringify(endIcon.position),
         UserId: user.userId
     }
 
@@ -291,7 +309,7 @@ function loadRoute(event) {
         iconLocation = JSON.parse(response.icon);
 
         // Set an icon at loaded location
-        getIcon(iconLocation, "start");
+        getStartIcon(iconLocation);
 
         // Draw route on map
         calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
@@ -309,7 +327,12 @@ function undoLast(event) {
 
     // If waypoints are emptied, clear markers from map
     if (wayPoints.length == 0) {
-        icon.setMap(null);
+        startIcon.setMap(null);
+
+        if (endIcon != null) {
+            endIcon.setMap(null);
+        }
+
         toggleMapBoxBtns(true); // disable map control buttons
     }
 
@@ -332,9 +355,14 @@ function clearRoute(event) {
     // Clear waypoints
     wayPoints = [];
 
-    // Clear icons
-    if (icon != null) {
-        icon.setMap(null);
+    // Clear start icon
+    if (startIcon != null) {
+        startIcon.setMap(null);
+    }
+
+    // Clear end icon
+    if (endIcon != null) {
+        endIcon.setMap(null);
     }
 
     // Reset distance text

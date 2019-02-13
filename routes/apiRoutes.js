@@ -93,7 +93,8 @@ module.exports = function (app) {
       name: req.body.name,
       distance: req.body.distance,
       wayPoints: req.body.wayPoints,
-      icon: req.body.icon,
+      startIcon: req.body.startIcon,
+      endIcon: req.body.endIcon,
       UserId: req.body.UserId
     }).then(function (dbRoutes) {
       console.log(dbRoutes);
