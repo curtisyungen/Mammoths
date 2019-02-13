@@ -81,12 +81,11 @@ function initMap() {
 
         // If this is the first point, put a marker there
         if (wayPoints.length == 1) {
-            icon = getStartIcon(wayPoints[0].location);
+            startIcon = getStartIcon(wayPoints[0].location);
         }
 
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
-
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
@@ -113,7 +112,7 @@ function toggleMapBoxBtns(key) {
     $("#loopRoute").prop("disabled", key);
     $("#clearRoute").prop("disabled", key);
 
-    // Toggle coloring of Clear Route button
+    // Toggle coloring of Clear Route button text
     if (key) {
         $("#clearRoute").css("color", "#777777");
     }
@@ -192,13 +191,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             }
         });
 
-    console.log(wayPoints);
-
     // Reset end icon
     if (endIcon != null) {
         endIcon.setMap(null);
     }
     endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
+    console.log("Way Points: " + wayPoints);
 }
 
 // API CALLS
@@ -297,8 +295,12 @@ function loadRoute(event) {
     }
 
     // Clear icons
-    if (icon != null) {
-        icon.setMap(null);
+    if (startIcon != null) {
+        startIcon.setMap(null);
+    }
+
+    if (endIcon != null) {
+        endIcon.setMap(null);
     }
 
     API.loadRoute(route).then(function (response) {
@@ -308,10 +310,12 @@ function loadRoute(event) {
         wayPoints = JSON.parse(response.wayPoints);
 
         // Get stored icon location
-        iconLocation = JSON.parse(response.icon);
+        startIconLoc = JSON.parse(response.startIcon);
+        endIconLoc = JSON.parse(response.endIcon);
 
-        // Set an icon at loaded location
-        getStartIcon(iconLocation);
+        // Set an icons at loaded locations
+        getStartIcon(startIconLoc);
+        getEndIcon(endIconLoc);
 
         // Draw route on map
         calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
@@ -330,10 +334,6 @@ function undoLast(event) {
     // If waypoints are emptied, clear markers from map
     if (wayPoints.length == 0) {
         startIcon.setMap(null);
-
-        if (endIcon != null) {
-            endIcon.setMap(null);
-        }
 
         toggleMapBoxBtns(true); // disable map control buttons
     }
