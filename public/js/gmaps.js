@@ -87,11 +87,12 @@ function initMap() {
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
 
-            // Refresh endIcon position to last point
+            // Clear end icon
             if (endIcon != null) {
                 endIcon.setMap(null);
             }
 
+            // Place end icon at new most recent location
             getEndIcon(wayPoints[wayPoints.length-1].location);
 
             toggleMapBoxBtns(false); // enable map control buttons
@@ -274,9 +275,16 @@ function loopRoute() {
     var reverseWayPoints = wayPoints.reverse();
     var length = reverseWayPoints.length; // So that length doesn't update in for loop
 
+    // Add reversed way points onto route
     for (var i = length - 1; i >= 0; i--) {
         wayPoints.push(reverseWayPoints[i]);
     }
+
+    // Update end icon to end of looped route
+    if (endIcon != null) {
+        endIcon.setMap(null);
+    }
+    endIcon = getEndIcon(wayPoints[wayPoints.length-1].location);
 
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
