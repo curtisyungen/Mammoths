@@ -110,11 +110,10 @@ function initMap() {
 // ======================================================
 
 function toggleMapBoxBtns(key) {
-    $("#saveRoute").disabled = key;
-    $("#undoLast").disabled = key;
-    $("#loopRoute").disabled = key;
-    $("#clearRoute").disabled = key;
-    console.log($("#saveRoute").disabled);
+    $("#saveRoute").prop("disabled", key);
+    $("#undoLast").prop("disabled", key);
+    $("#loopRoute").prop("disabled", key);
+    $("#clearRoute").prop("disabled", key);
 }
 
 // GET START ICON
