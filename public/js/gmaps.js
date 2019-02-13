@@ -163,11 +163,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     distance = 0;
     var meters = 0;
     const metersToMiles = 0.000621371192;
+    var destination = wayPoints[wayPoints.length - 1];
 
     directionsService.route({
         origin: wayPoints[0],
         waypoints: wayPoints,
-        destination: wayPoints[wayPoints.length - 1],
+        destination: destination,
         optimizeWaypoints: false,
         travelMode: 'WALKING'
     },
@@ -194,7 +195,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             if (endIcon != null) {
                 endIcon.setMap(null);
             }
-            //endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
+            endIcon = getEndIcon(destination.location);
         });
 
 
