@@ -82,15 +82,14 @@ function initMap() {
         if (wayPoints.length == 1) {
             icon = getStartIcon(wayPoints[0].location);
         }
-        
+
         // If at least one wayPoint present, calculate route
-        // Enable/disable Map Control Box buttons
         if (wayPoints.length > 1) {
-            toggleMapBoxBtns(false);
+            toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
         else {
-            toggleMapBoxBtns(true);
+            toggleMapBoxBtns(true); // disable map control buttons
         }
     });
 
@@ -274,6 +273,7 @@ function loadRoute(event) {
         // Get stored icon location
         iconLocation = JSON.parse(response.icon);
 
+        // Set an icon at loaded location
         getStartIcon(iconLocation);
 
         // Draw route on map
@@ -287,13 +287,16 @@ function loadRoute(event) {
 function undoLast(event) {
     event.preventDefault();
 
+    // Remove last waypoint from array
     wayPoints.pop();
 
     // If waypoints are emptied, clear markers from map
     if (wayPoints.length == 0) {
         icon.setMap(null);
+        toggleMapBoxBtns(true); // disable map control buttons
     }
 
+    // Redraw route on map
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
 
@@ -306,6 +309,9 @@ function clearRoute(event) {
     // Clear save confirmation message
     setConfirmMsg("clear");
 
+    // Disable map control buttons
+    toggleMapBoxBtns(true);
+
     // Clear waypoints
     wayPoints = [];
 
@@ -314,6 +320,7 @@ function clearRoute(event) {
         icon.setMap(null);
     }
 
+    // Reset distance text
     $("#distance").text("0.0 mi.");
 
     // Erase route from map
