@@ -4,7 +4,8 @@
     "password": "",
     "database": "runs_db",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "start": "node server.js"
   },
   "test": {
     "username": "root",
