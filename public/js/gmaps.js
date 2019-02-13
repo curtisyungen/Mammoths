@@ -90,9 +90,6 @@ function initMap() {
     $("#clearRoute").on("click", clearRoute);
     $("#undoLast").on("click", undoLast);
     $("#loopRoute").on("click", loopRoute);
-
-    $("#loadRoute").on("click", loadRoute);
-
 }
 
 // GET START ICON
@@ -193,7 +190,7 @@ var API = {
 function saveRoute(event) {
     event.preventDefault();
 
-    var routeName = prompt("Name this route: ");
+    var routeName = "";
 
     var newRoute = {
         name: routeName,
