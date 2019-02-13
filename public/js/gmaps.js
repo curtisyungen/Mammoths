@@ -192,7 +192,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             }
         });
 
-    // Update end icon to end of looped route
+    console.log(wayPoints);
+
+    // Reset end icon
     if (endIcon != null) {
         endIcon.setMap(null);
     }
