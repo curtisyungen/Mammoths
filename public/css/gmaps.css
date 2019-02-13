@@ -20,8 +20,9 @@ button {
 }
 
 #confirmSave {
-    font-size: 14px;
+    font-size: 12px;
     padding: 5px;
+    padding-bottom: -5px;
 }
 
 #distance {

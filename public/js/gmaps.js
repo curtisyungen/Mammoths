@@ -68,6 +68,9 @@ function initMap() {
     // Calculate and update directions display
     google.maps.event.addListener(map, 'click', function (event) {
 
+        // Clear save confirmation message
+        setConfirmMsg("clear");
+
         wayPoints.push({
             location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
         });
@@ -208,8 +211,20 @@ function saveRoute(event) {
     });
 
     // *** Move into API callback function
-    $("#confirmSave").text("Route saved!");
+    setConfirmMsg("save");
+}
 
+function setConfirmMsg(key) {
+
+    var message;
+
+    switch(key) {
+        case "save": message = "Route saved!"; break;
+        case "clear": message = ""; break;
+        default: message = "";
+    }
+
+    $("#confirmSave").text(message);
 }
 
 // LOAD ROUTE
@@ -267,6 +282,9 @@ function undoLast(event) {
 
 function clearRoute(event) {
     event.preventDefault();
+
+    // Clear save confirmation message
+    setConfirmMsg("clear");
 
     // Clear waypoints
     wayPoints = [];
