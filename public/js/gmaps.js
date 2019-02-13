@@ -3,6 +3,7 @@
 
 var directionsService;
 var directionsDisplay;
+var elevator;
 var wayPoints;
 var distance;
 var startIcon;
@@ -60,6 +61,11 @@ function initMap() {
 
     directionsDisplay.setMap(map);
 
+    // Set up Elevation Tools
+    // ======================================================
+
+    elevator = new google.maps.ElevationService
+
     // Calculate and Draw Routes
     // ======================================================
 
@@ -101,6 +107,29 @@ function initMap() {
     $("#clearRoute").on("click", clearRoute);
     $("#undoLast").on("click", undoLast);
     $("#loopRoute").on("click", loopRoute);
+}
+
+function displayPathElevation(path, elevator, map) {
+    elevator.getElevationAlongPath({
+        "path": path,
+        "samples": 256
+    }, plotElevation);
+}
+
+function plotElevation(elevations, status) {
+    var chartDiv = $("#elevation_chart");
+    if (status !== "OK") {
+        chartDiv.innerHTML = "Cannot show elevation: request failed because " + status;
+        return;
+    }
+
+    var chart = new google.visualization.ColumnChart(chartDiv);
+
+    chart.draw(data, {
+        height: 150,
+        legend: "none",
+        titleY: "Elevation (m)"
+    });
 }
 
 // MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
@@ -197,8 +226,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             }
             endIcon = getEndIcon(destination.location);
         });
-
-
 }
 
 // API CALLS
@@ -250,6 +277,8 @@ function saveRoute(event) {
 
     // *** Move into API callback function
     setConfirmMsg("save");
+
+    displayPathElevation(wayPoints, elevator, map);
 }
 
 // "ROUTE SAVED" CONFIRMATION MESSAGE
