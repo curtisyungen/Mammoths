@@ -87,14 +87,6 @@ function initMap() {
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
 
-            // Clear end icon
-            if (endIcon != null) {
-                endIcon.setMap(null);
-            }
-
-            // Place end icon at new most recent location
-            getEndIcon(wayPoints[wayPoints.length - 1].location);
-
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
