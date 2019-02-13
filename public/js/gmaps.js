@@ -15,9 +15,9 @@ var user = {
     userId: localStorage.getItem("userId"),
     userEmail: localStorage.getItem("userEmail"),
     userName: localStorage.getItem("userName"),
-  };
-  
-  console.log("userid" + user.userId);
+};
+
+console.log("userid" + user.userId);
 
 
 // INITIALIZE MAP
@@ -65,10 +65,7 @@ function initMap() {
     wayPoints = [];
 
     // Initially disable Map Control Box buttons
-    $("#saveRoute").disabled = true;
-    $("#undoLast").disabled = true;
-    $("#loopRoute").disabled = true;
-    $("#clearRoute").disabled = true;
+    toggleMapBoxBtns(true);
 
     // Listen for user clicks on map
     // Calculate and update directions display
@@ -88,16 +85,10 @@ function initMap() {
 
         // Enable/disable Map Control Box buttons
         if (wayPoints.length >= 1) {
-            $("#saveRoute").disabled = false;
-            $("#undoLast").disabled = false;
-            $("#loopRoute").disabled = false;
-            $("#clearRoute").disabled = false;
+            toggleMapBoxBtns(false);
         }
         else {
-            $("#saveRoute").disabled = true;
-            $("#undoLast").disabled = true;
-            $("#loopRoute").disabled = true;
-            $("#clearRoute").disabled = true;
+            toggleMapBoxBtns(true);
         }
 
         // If at least one wayPoint present, calculate route
@@ -115,11 +106,21 @@ function initMap() {
     $("#loopRoute").on("click", loopRoute);
 }
 
+// MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
+// ======================================================
+
+function toggleMapBoxBtns(key) {
+    $("#saveRoute").disabled = key;
+    $("#undoLast").disabled = key;
+    $("#loopRoute").disabled = key;
+    $("#clearRoute").disabled = key;
+}
+
 // GET START ICON
 // ======================================================
 
 function getStartIcon(position) {
-    
+
     // Google libraries of map marker icons
     var startIcon = "http://maps.google.com/mapfiles/arrow.png";
 
@@ -169,21 +170,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         });
 }
 
-// LOOP ROUTE (OUT AND BACK)
-// ======================================================
-
-function loopRoute() {
-
-    var reverseWayPoints = wayPoints.reverse(); 
-    var length = reverseWayPoints.length; // So that length doesn't update in for loop
-
-    for (var i=length-1; i>=0; i--) {
-        wayPoints.push(reverseWayPoints[i]);
-    }
-
-    calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
-}
-
 // API CALLS
 // ======================================================
 
@@ -199,7 +185,7 @@ var API = {
         });
     },
 
-    loadRoute: function(route) {
+    loadRoute: function (route) {
         return $.ajax({
             url: "api/loadRoute/" + route.name,
             type: "GET"
@@ -234,17 +220,34 @@ function saveRoute(event) {
     setConfirmMsg("save");
 }
 
+// "ROUTE SAVED" CONFIRMATION MESSAGE
+
 function setConfirmMsg(key) {
 
     var message;
 
-    switch(key) {
+    switch (key) {
         case "save": message = "Route saved!"; break;
         case "clear": message = ""; break;
         default: message = "";
     }
 
     $("#confirmSave").text(message);
+}
+
+// LOOP ROUTE (OUT AND BACK)
+// ======================================================
+
+function loopRoute() {
+
+    var reverseWayPoints = wayPoints.reverse();
+    var length = reverseWayPoints.length; // So that length doesn't update in for loop
+
+    for (var i = length - 1; i >= 0; i--) {
+        wayPoints.push(reverseWayPoints[i]);
+    }
+
+    calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
 
 // LOAD ROUTE
@@ -259,13 +262,13 @@ function loadRoute(event) {
     var route = {
         name: routeName
     }
-    
+
     // Clear icons
     if (icon != null) {
         icon.setMap(null);
     }
 
-    API.loadRoute(route).then(function(response) {
+    API.loadRoute(route).then(function (response) {
         console.log("Loading...");
 
         // Get stored waypoints for route
