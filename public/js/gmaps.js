@@ -113,10 +113,10 @@ function toggleMapBoxBtns(key) {
 
     // Toggle coloring of Clear Route button
     if (key) {
-        $("#clearRoute").css("color", "red");
+        $("#clearRoute").css("color", "darkgray");
     }
     else {
-        $("#clearRoute").css("color", "");
+        $("#clearRoute").css("color", "red");
     }
 }
 
