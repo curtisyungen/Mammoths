@@ -194,7 +194,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             if (endIcon != null) {
                 endIcon.setMap(null);
             }
-            endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
+            //endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
         });
 
 
