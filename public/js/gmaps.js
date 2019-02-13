@@ -205,29 +205,12 @@ function saveRoute(event) {
     API.saveRoute(newRoute).then(function (response) {
         console.log("Saving...");
         console.log(response);
-        
     });
+
+    // *** Move into API callback function
+    $("#confirmSave").text("Route saved!");
 
 }
-
-$(function() {
-    $("#savedDialog").dialog({
-        autoOpen: false,
-        show: {
-            effect: "blind",
-            duration: 800
-        },
-        hide: {
-            effect: "explode",
-            duration: 800
-        }
-    });
-
-    $("#saveRoute").on("click", function() {
-        $("#savedDialog").dialog("open");
-    });
-});
-
 
 // LOAD ROUTE
 // ======================================================

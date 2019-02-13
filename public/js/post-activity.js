@@ -8,8 +8,7 @@ var $runHours = $("#hours");
 var $runMins = $("#minutes");
 var $runSecs = $("#seconds");
 var $runLocation = $("#locationForm");
-var $runSurface = $("#surfaceForm")
-
+var $runSurface = $("#surfaceForm");
 var $submitBtn = $("#submitRun");
 var $runList = $("#runList");
 var $newActivity = $("#newActivity");

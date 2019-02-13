@@ -19,6 +19,11 @@ button {
     color: red;
 }
 
+#confirmSave {
+    font-size: 14px;
+    padding: 5px;
+}
+
 #distance {
     font-size: 18px;
     font-weight: 700;

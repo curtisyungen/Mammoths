@@ -80,9 +80,8 @@
                             <button id="loopRoute">Loop Route</button><br>
                             <button id="clearRoute">Clear Route</button>
                         </div>
-                        <div id="savedDialog" title="Saved Dialog Box">
-                            <p>Route saved!</p>
-                        </div>
+                        <div id="confirmSave"></div>
+                        
                     </div>
                 </div>
             </div>
@@ -159,14 +158,14 @@
                     <p id="top5Runs">Recent 5 Runs:</p>
                     <ul id="run-list" class="list-group">
                         {{#each runs}}
-                        {{!-- <span> --}}
+
                         <li data-id="{{this.id}}" class="list-group-item">
                             <a>{{this.date}}</a>
                             <a>{{this.distance}}</a>
                             <a>{{this.duration}}</a>
                             <button class="btn btn-danger float-right delete">ｘ</button>
                         </li>
-                        {{!-- </span> --}}
+
                         {{/each}}
                     </ul>
                 </div>
@@ -175,20 +174,17 @@
                     <p id="top5Routes">Recent 5 Routes:</p>
                     <ul id="route-list" class="list-group">
                         {{#each routes}}
-                        {{!-- <span> --}}
+
                         <li data-id="{{this.id}}" class="list-group-item">
                             <a>{{this.date}}</a>
                             <a>{{this.distance}}</a>
                             <button class="btn btn-danger float-right delete">ｘ</button>
                         </li>
-                        {{!-- </span> --}}
+
                         {{/each}}
                     </ul>
                     
                 </div>
-                <br><br>
-                {{!-- <button class="btn btn-light btn-sm" id="loadRoute">Load Route</button> --}}
-
             </div>
 
         </div>
@@ -250,7 +246,6 @@
 
 {{!-- Javascript, Jquery --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/js/post-activity.js"></script>
 <script src="/js/gmaps.js"></script>
 <script
