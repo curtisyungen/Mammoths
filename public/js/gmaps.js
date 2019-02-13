@@ -110,6 +110,14 @@ function toggleMapBoxBtns(key) {
     $("#undoLast").prop("disabled", key);
     $("#loopRoute").prop("disabled", key);
     $("#clearRoute").prop("disabled", key);
+
+    // Toggle coloring of Clear Route button
+    if (key) {
+        $("#clearRoute").css("color", "red");
+    }
+    else {
+        $("#clearRoute").css("color", "");
+    }
 }
 
 // GET START ICON

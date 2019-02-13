@@ -15,10 +15,6 @@ button {
     padding: 5px;
 }
 
-#clearRoute {
-    color: red;
-}
-
 #confirmSave {
     font-size: 12px;
     margin-bottom: -5px;
@@ -39,10 +35,6 @@ button {
 .duration {
     display: inline-block;
     width: 32%;
-}
-
-#loopRoute {
-    color: black;
 }
 
 #map {
