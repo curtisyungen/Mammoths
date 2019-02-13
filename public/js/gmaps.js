@@ -80,6 +80,20 @@ function initMap() {
             icon = getStartIcon(wayPoints[0].location);
         }
 
+        // Enable/disable Map Control Box buttons
+        if (wayPoints.length >= 1) {
+            $("#saveRoute").disabled = false;
+            $("#undoLast").disabled = false;
+            $("#loopRoute").disabled = false;
+            $("#clearRoute").disabled = false;
+        }
+        else {
+            $("#saveRoute").disabled = true;
+            $("#undoLast").disabled = true;
+            $("#loopRoute").disabled = true;
+            $("#clearRoute").disabled = true;
+        }
+
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
