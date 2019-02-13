@@ -276,7 +276,7 @@ function loopRoute() {
     var length = reverseWayPoints.length; // So that length doesn't update in for loop
 
     // Add reversed way points onto route
-    for (var i = length - 1; i >= 0; i--) {
+    for (var i=0; i<length; i++) {
         wayPoints.push(reverseWayPoints[i]);
     }
 
