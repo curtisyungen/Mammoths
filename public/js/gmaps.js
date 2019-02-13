@@ -284,7 +284,7 @@ function loopRoute() {
     if (endIcon != null) {
         endIcon.setMap(null);
     }
-    endIcon = getEndIcon(wayPoints[wayPoints.length-1].location);
+    endIcon = getEndIcon(reverseWayPoints[length-1].location);
 
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
