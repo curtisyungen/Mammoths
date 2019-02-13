@@ -90,8 +90,9 @@ function initMap() {
             // Refresh endIcon position to last point
             if (endIcon != null) {
                 endIcon.setMap(null);
-                getEndIcon(wayPoints[wayPoints.length-1].location);
             }
+
+            getEndIcon(wayPoints[wayPoints.length-1].location);
 
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
@@ -161,7 +162,6 @@ function getEndIcon(position) {
 
     return endIcon;
 }
-
 
 // CALCULATE AND DISPLAY ROUTE
 // ======================================================
