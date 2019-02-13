@@ -93,7 +93,7 @@ function initMap() {
             }
 
             // Place end icon at new most recent location
-            getEndIcon(wayPoints[wayPoints.length-1].location);
+            getEndIcon(wayPoints[wayPoints.length - 1].location);
 
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
@@ -199,6 +199,12 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
                 window.alert('Directions request failed due to ' + status);
             }
         });
+
+    // Update end icon to end of looped route
+    if (endIcon != null) {
+        endIcon.setMap(null);
+    }
+    endIcon = getEndIcon(wayPoints[wayPoints.length - 1].location);
 }
 
 // API CALLS
@@ -279,12 +285,6 @@ function loopRoute() {
     for (var i = length - 1; i >= 0; i--) {
         wayPoints.push(reverseWayPoints[i]);
     }
-
-    // Update end icon to end of looped route
-    if (endIcon != null) {
-        endIcon.setMap(null);
-    }
-    endIcon = getEndIcon(reverseWayPoints[length-1].location);
 
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
