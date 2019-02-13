@@ -207,10 +207,11 @@ function saveRoute(event) {
         console.log(response);
         
     });
-    getDialog();
+
+    $("#savedDialog").dialog("open");
 }
 
-function getDialog() {
+$(function() {
     $("#savedDialog").dialog({
         autoOpen: false,
         show: {
@@ -222,7 +223,8 @@ function getDialog() {
             duration: 800
         }
     });
-}
+});
+
 
 // LOAD ROUTE
 // ======================================================
