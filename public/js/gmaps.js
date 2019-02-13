@@ -82,18 +82,15 @@ function initMap() {
         if (wayPoints.length == 1) {
             icon = getStartIcon(wayPoints[0].location);
         }
-
+        
+        // If at least one wayPoint present, calculate route
         // Enable/disable Map Control Box buttons
-        if (wayPoints.length >= 1) {
+        if (wayPoints.length > 1) {
             toggleMapBoxBtns(false);
+            calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
         else {
             toggleMapBoxBtns(true);
-        }
-
-        // If at least one wayPoint present, calculate route
-        if (wayPoints.length > 1) {
-            calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
     });
 
