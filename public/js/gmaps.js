@@ -208,7 +208,6 @@ function saveRoute(event) {
         
     });
 
-    $("#savedDialog").dialog("open");
 }
 
 $(function() {
@@ -222,6 +221,10 @@ $(function() {
             effect: "explode",
             duration: 800
         }
+    });
+
+    $("#saveRoute").on("click", function() {
+        $("#savedDialog").dialog("open");
     });
 });
 
