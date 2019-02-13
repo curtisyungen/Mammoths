@@ -6,6 +6,7 @@ var directionsDisplay;
 var wayPoints;
 var distance;
 var icon;
+var endIcon;
 var map;
 
 // USER INFO ON SIGN IN
@@ -85,6 +86,10 @@ function initMap() {
 
         // If at least one wayPoint present, calculate route
         if (wayPoints.length > 1) {
+
+            // Display End Icon for last way point
+            endIcon = getIcon(wayPoints[wayPoints.length-1].location, "end");
+
             toggleMapBoxBtns(false); // enable map control buttons
             calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
         }
