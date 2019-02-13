@@ -64,6 +64,12 @@ function initMap() {
 
     wayPoints = [];
 
+    // Initially disable Map Control Box buttons
+    $("#saveRoute").disabled = true;
+    $("#undoLast").disabled = true;
+    $("#loopRoute").disabled = true;
+    $("#clearRoute").disabled = true;
+
     // Listen for user clicks on map
     // Calculate and update directions display
     google.maps.event.addListener(map, 'click', function (event) {
