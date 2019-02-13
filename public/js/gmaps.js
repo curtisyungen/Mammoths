@@ -205,9 +205,9 @@ function saveRoute(event) {
     API.saveRoute(newRoute).then(function (response) {
         console.log("Saving...");
         console.log(response);
-        getDialog();
+        
     });
-    
+    getDialog();
 }
 
 function getDialog() {
