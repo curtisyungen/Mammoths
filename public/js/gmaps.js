@@ -211,7 +211,9 @@ function saveRoute(event) {
     });
 
     // *** TEMPORARY. Change to more elegant later ***
-    $("#saveRoute").animate({color: "green"}, 400);
+    $("#saveRoute").css("color", "white");
+    $("#saveRoute").css("background", "lightgreen");
+    $("#saveRoute").text("Route saved!");
 }
 
 // LOAD ROUTE
