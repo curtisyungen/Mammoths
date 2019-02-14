@@ -54,7 +54,6 @@ function initMap() {
 
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer({
-        // draggable: true,
         preserveViewport: true,
         suppressMarkers: true
     });
@@ -68,6 +67,9 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow({
         content: content,
+        pixelOffset: 5,
+        maxWidth: 75,
+        preserveViewport: true
     });
 
     infoWindow.open(map);
