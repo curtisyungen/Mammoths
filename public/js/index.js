@@ -13,153 +13,155 @@ console.log("userid " + user.userId);
 // APPEND USER NAME TO THE NAV BAR
 $("#loggedInUser").append(user.userName)
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  getRuns: function () {
-    return $.ajax({
-      url: "api/runs",
-      type: "GET"
-    });
-  },
-};
+
+var runTableDates = [];
+var runTableDistances = [];
 
 // refreshRuns gets new runs from the db and repopulates the list
 var refreshRuns = function () {
-  API.getRuns().then(function (data) {
-    console.log(data);
+  $.ajax({
+    url: "api/runs/" + user.userId,
+    type: "GET"
+  })
+    .then(function (data) {
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        runTableDates.push(data[i].date);
+        runTableDistances.push(data[i].distance);
+      }
 
-    /// BAR CHART GOES HERE
-
-
-  });
+      // Bar Chart
+      // =======================================================
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: runTableDates,
+          datasets: [{
+            label: 'Miles',
+            data: runTableDistances,
+            backgroundColor: [
+              'rgba(255, 0, 0, 0.3)',
+              'rgba(0, 255, 0, 0.3)',
+              'rgba(0, 0, 255, 0.3)',
+              'rgba(75, 192, 192, 0.3)',
+              'rgba(400, 175, 0, 0.3)',
+            ],
+            borderColor: [
+              'red',
+              'green',
+              'blue',
+              'rgba(75, 192, 192, 1)',
+              'rgba(0, 100, 0, 0.3)'
+            ],
+            borderWidth: 1,
+            hoverBorderWidth: 5
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Miles Ran',
+            fontColor: "white"
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontColor: "white"
+              },
+              gridLines: {
+                color: 'rgb(118, 40, 155)'
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                fontColor: "white"
+              },
+            }]
+          },
+        }
+      });
+    });
 };
 
 refreshRuns();
 
-// Bar Chart
+
+
+
+// Line Chart
 // =======================================================
 
-var ctx = document.getElementById("myChart").getContext('2d');
-  var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Joseph", "Vahe", "Curtis", "Bhavin",],
-      datasets: [{
-        label: 'Miles',
-        data: [5, 15, 30, 20,],
-        backgroundColor: [
-          'rgba(255, 0, 0, 0.3)',
-          'rgba(0, 255, 0, 0.3)',
-          'rgba(0, 0, 255, 0.3)',
-          'rgba(75, 192, 192, 0.3)',
-        ],
-        borderColor: [
-          'red',
-          'green',
-          'blue',
-          'rgba(75, 192, 192, 1)',
-        ],
-        borderWidth: 1,
-        hoverBorderWidth: 5
-      }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Miles Ran',
-        fontColor: "white"
+var lineC = document.getElementById("lineChart").getContext('2d');
+var myChart = new Chart(lineC, {
+  type: 'line',
+  data: {
+    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    datasets: [
+      {
+        label: 'Joseph',
+        data: [50, 60, 40, 80],
+        borderColor: 'rgba(255, 0, 0, 0.3)',
+        fill: false,
+        pointBackgroundColor: 'red',
+        pointHoverRadius: 7,
       },
-      legend: {
-        display: false
+      {
+        label: 'Vahe',
+        data: [22, 11, 44, 50],
+        borderColor: 'rgba(0, 255, 0, 0.3)',
+        fill: false,
+        pointBackgroundColor: 'green',
+        pointHoverRadius: 7,
       },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true,
-            fontColor: "white"
-          },
-          gridLines: {
-            color: 'rgb(118, 40, 155)'
-          }
-        }],
-        xAxes: [{
-          ticks: {
-            fontColor: "white"
-          },
-        }]
+      {
+        label: 'Curtis',
+        data: [30, 70, 100, 90],
+        borderColor: 'rgba(0, 0, 255, 0.3)',
+        fill: false,
+        pointBackgroundColor: 'blue',
+        pointHoverRadius: 7,
       },
-    }
-  });
-
-  // Line Chart
-  // =======================================================
-
-  var lineC = document.getElementById("lineChart").getContext('2d');
-  var myChart = new Chart(lineC, {
-    type: 'line',
-    data: {
-      labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-      datasets: [
-        {
-          label: 'Joseph',
-          data: [50, 60, 40, 80],
-          borderColor: 'rgba(255, 0, 0, 0.3)',
-          fill: false,
-          pointBackgroundColor: 'red',
-          pointHoverRadius: 7,
-        },
-        {
-          label: 'Vahe',
-          data: [22, 11, 44, 50],
-          borderColor: 'rgba(0, 255, 0, 0.3)',
-          fill: false,
-          pointBackgroundColor: 'green',
-          pointHoverRadius: 7,
-        },
-        {
-          label: 'Curtis',
-          data: [30, 70, 100, 90],
-          borderColor: 'rgba(0, 0, 255, 0.3)',
-          fill: false,
-          pointBackgroundColor: 'blue',
-          pointHoverRadius: 7,
-        },
-        {
-          label: 'Bhavin',
-          data: [74, 70, 30, 5],
-          borderColor: 'rgba(75, 192, 192, 0.3)',
-          fill: false,
-          pointBackgroundColor: 'cyan',
-          pointHoverRadius: 7,
-        }
-      ],
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Weekly Goal Completion',
-        fontColor: "white"
-      },
-      scales: {
-        yAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: "% Completion",
-            fontColor: "gray"
-          },
-          ticks: {
-            beginAtZero: true,
-            fontColor: "white"
-          },
-          gridLines: {
-            color: 'rgb(118, 40, 155)'
-          }
-        }],
+      {
+        label: 'Bhavin',
+        data: [74, 70, 30, 5],
+        borderColor: 'rgba(75, 192, 192, 0.3)',
+        fill: false,
+        pointBackgroundColor: 'cyan',
+        pointHoverRadius: 7,
       }
+    ],
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Weekly Goal Completion',
+      fontColor: "white"
+    },
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: "% Completion",
+          fontColor: "gray"
+        },
+        ticks: {
+          beginAtZero: true,
+          fontColor: "white"
+        },
+        gridLines: {
+          color: 'rgb(118, 40, 155)'
+        }
+      }],
     }
-  });
+  }
+});
 
-  // Google Sign Out
+// Google Sign Out
 // =======================================================
 var auth2;
 

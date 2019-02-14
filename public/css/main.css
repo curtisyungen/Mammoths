@@ -11,18 +11,18 @@
   clear: both;
 } 
 
-#top5Routes {
+/* #top5Routes {
   font-size: 20px;
   font-weight: bold;
   position: absolute;
-}
+} */
 
-#route-list{
+/* #route-list{
   display: block;
   position: relative;
   top: 30px;
   clear: both;
-} 
+}  */
 
 .list-group-item {
   margin: 5px;

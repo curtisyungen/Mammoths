@@ -3,7 +3,6 @@
 
 var directionsService;
 var directionsDisplay;
-var elevator;
 var wayPoints;
 var distance;
 var startIcon;
@@ -24,9 +23,6 @@ console.log("userid" + user.userId);
 
 // INITIALIZE MAP
 // ======================================================
-
-// Load the Visualization API and the columnchart package.
-google.load('visualization', '1', { packages: ['columnchart'] });
 
 function initMap() {
 
@@ -63,11 +59,6 @@ function initMap() {
     });
 
     directionsDisplay.setMap(map);
-
-    // Set up Elevation Tools
-    // ======================================================
-
-    elevator = new google.maps.ElevationService
 
     // Calculate and Draw Routes
     // ======================================================
@@ -106,33 +97,10 @@ function initMap() {
     // Event handlers for Map Control Buttons
     // ======================================================
 
-    $("#saveRoute").on("click", saveRoute);
+    $("#saveRoute").on("click", openModal);
     $("#clearRoute").on("click", clearRoute);
     $("#undoLast").on("click", undoLast);
     $("#loopRoute").on("click", loopRoute);
-}
-
-function displayPathElevation(path, elevator) {
-    elevator.getElevationAlongPath({
-        "path": path,
-        "samples": 256
-    }, plotElevation);
-}
-
-function plotElevation(elevations, status) {
-    var chartDiv = $("#elevation_chart");
-    if (status !== "OK") {
-        chartDiv.innerHTML = "Cannot show elevation: request failed because " + status;
-        return;
-    }
-
-    var chart = new google.visualization.ColumnChart(chartDiv);
-
-    chart.draw(data, {
-        height: 150,
-        legend: "none",
-        titleY: "Elevation (m)"
-    });
 }
 
 // MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
@@ -142,15 +110,6 @@ function toggleMapBoxBtns(key) {
     $("#saveRoute").prop("disabled", key);
     $("#undoLast").prop("disabled", key);
     $("#loopRoute").prop("disabled", key);
-    $("#clearRoute").prop("disabled", key);
-
-    // Toggle coloring of Clear Route button text
-    if (key) {
-        $("#clearRoute").css("color", "#777777");
-    }
-    else {
-        $("#clearRoute").css("color", "red");
-    }
 }
 
 // GET START ICON
@@ -257,13 +216,33 @@ var API = {
 // SAVE ROUTE
 // ======================================================
 
-function saveRoute(event) {
+// Open modal to enter route name
+function openModal(event) {
     event.preventDefault();
 
-    var routeName = "";
+    var modal = $("#nameRouteModal");
+    modal.show();
+    $("#modal-routeName").focus();
+}
+
+// Event handler to close modal and save route
+$("#closeNameRouteModal").on("click", function(event) {
+    event.preventDefault();
+
+    $("#nameRouteModal").hide();
+
+    var name = $("#modal-routeName").val().trim();
+    var location = $("#modal-location").val().trim();
+
+    saveRoute(name, location);
+});
+
+// Save route to database
+function saveRoute(routeName, location) {  
 
     var newRoute = {
         name: routeName,
+        location: location,
         distance: distance,
         wayPoints: JSON.stringify(wayPoints),
         startIcon: JSON.stringify(startIcon.position),
@@ -271,26 +250,16 @@ function saveRoute(event) {
         UserId: user.userId
     }
 
-    // console.log(newRoute);
-
-    API.saveRoute(newRoute).then(function (response) {
+    if (routeName != null & routeName != "") {
         console.log("Saving...");
-        console.log(response);
-    });
 
-    // *** Move into API callback function
-    setConfirmMsg("save");
+        API.saveRoute(newRoute);
 
-    var path = [];
-    for (var i = 0; i < wayPoints.length; i++) {
-        path.push(wayPoints[i].location);
+        setTimeout(setConfirmMsg("save"), 1000);
     }
-
-    displayPathElevation(path, elevator);
 }
 
-// "ROUTE SAVED" CONFIRMATION MESSAGE
-
+// "Route saved" confirmation message
 function setConfirmMsg(key) {
 
     var message;
@@ -298,6 +267,7 @@ function setConfirmMsg(key) {
     switch (key) {
         case "save": message = "Route saved!"; break;
         case "clear": message = ""; break;
+        case "saving": message = "Saving..."; break;
         default: message = "";
     }
 
@@ -323,11 +293,11 @@ function loopRoute() {
 // LOAD ROUTE
 // ======================================================
 
-function loadRoute(event) {
-    event.preventDefault();
+$("#showRoutes").on("change", loadRoute);
 
-    // *** TEMPORARY. Change to more elegant later ***
-    var routeName = prompt("Enter name of route to load: ");
+function loadRoute() {
+
+    var routeName = $("#showRoutes").val().split(":")[0].toString();
 
     var route = {
         name: routeName
@@ -392,6 +362,11 @@ function clearRoute(event) {
 
     // Disable map control buttons
     toggleMapBoxBtns(true);
+    
+    // Clear entry form
+    $("#showRoutes").val("");
+    $("#distanceForm").val("");
+    $("#locationForm").val("");
 
     // Clear waypoints
     wayPoints = [];

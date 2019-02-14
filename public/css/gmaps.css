@@ -58,6 +58,11 @@ button {
     width: 33%;
 }
 
+#nameRouteModal {
+    padding-top: 15%;
+    vertical-align: middle;
+}
+
 #pace {
     float: right;
     font-size: 14px;

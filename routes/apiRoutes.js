@@ -69,7 +69,7 @@ module.exports = function (app) {
     //console.log(user);
   });
 
-  // Load a route from database
+  //Load a route from database
   app.get("/api/loadRoute/:name", function(req, res) {
     db.Routes.findOne({
       where: {name: req.params.name} 
@@ -91,6 +91,7 @@ module.exports = function (app) {
   app.post("/api/saveRoute", function (req, res) {
     db.Routes.create({
       name: req.body.name,
+      location: req.body.location,
       distance: req.body.distance,
       wayPoints: req.body.wayPoints,
       startIcon: req.body.startIcon,

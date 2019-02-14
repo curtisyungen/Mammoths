@@ -69,6 +69,8 @@ refreshRuns();
 // LOAD EXISTING ROUTE (DROP DOWN MENU IN FORM)
 // ========================================
 
+showRoutes();
+
 function showRoutes() {
 
   $.ajax({
@@ -76,7 +78,8 @@ function showRoutes() {
     type: "GET"
   })
   .then(function (data) {
-    console.log(data);
+    //console.log(data);
+
     for (var i=0; i<data.length; i++) {
       var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " miles");
 
@@ -84,8 +87,6 @@ function showRoutes() {
     }
   });
 };
-
-showRoutes();
 
 // AUTO-POPULATE DISTANCE FIELD
 // ========================================
@@ -143,7 +144,7 @@ var handleFormSubmit = function (event) {
   event.preventDefault();
 
   var $runDuration = `${$runHours.val().trim()}:${$runMins.val().trim()}:${$runSecs.val().trim()}`;
-  console.log($runRoute.val());
+  
   var run = {
     date: $runDate.val().trim(),
     distance: $runDistance.val().trim(),
@@ -160,8 +161,6 @@ var handleFormSubmit = function (event) {
     alert("Please fill out the date, distance and duration.");
     return;
   };
-
-  console.log(run);
 
   // Submit new run
   $.ajax({
