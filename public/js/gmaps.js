@@ -8,6 +8,7 @@ var distance;
 var startIcon;
 var endIcon;
 var map;
+var infoWindow;
 
 // USER INFO ON SIGN IN
 // ========================================
@@ -102,6 +103,21 @@ function initMap() {
     $("#undoLast").on("click", undoLast);
     $("#loopRoute").on("click", loopRoute);
 }
+
+// MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
+// ======================================================
+
+$("#map").on("mouseover", function() {
+    var content = "Click on map to draw route";
+
+    infoWindow = new google.maps.InfoWindow({
+        content: content,
+    });
+});
+
+google.maps.event.addListener(map,'mousemove',function(event){
+    infoWindow.setPosition(event.latLng);
+});
 
 // MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
 // ======================================================
@@ -333,7 +349,7 @@ function loopRoute() {
     var wayPointCopy = wayPoints;
     var length = wayPointCopy.length; // So that length doesn't update in for loop
 
-    // Add reversed way points onto route
+    // Add way points onto route in reverse order
     for (var i=length-1; i>=0; i--) {
         wayPoints.push(wayPointCopy[i]);
     }
