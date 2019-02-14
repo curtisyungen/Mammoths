@@ -68,6 +68,10 @@ button {
     width: 33%;
 }
 
+#modal-locationLabel {
+    margin-top: 5px;
+}
+
 #nameRouteModal {
     padding-top: 15%;
     vertical-align: middle;

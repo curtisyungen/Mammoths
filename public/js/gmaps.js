@@ -237,12 +237,11 @@ function openModal(event) {
 $("#closeNameRouteModal").on("click", function(event) {
     event.preventDefault();
 
-    $("#nameRouteModal").hide();
-
     var name = $("#modal-routeName").val().trim();
     var location = $("#modal-location").val().trim();
 
     if (name != null && name != "") {
+        $("#nameRouteModal").hide();
         saveRoute(name, location);
     }
     else {
