@@ -256,12 +256,14 @@ $("#cancelChangeCityModal").on("click", function(event) {
     $("#changeCityModal").hide();
 });
 
+// Change city
 function changeCity(city) {
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({"address": city}, function(results, status) {
         if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
+            map.setZoom(12);
         } 
         else {
             alert("Geocode error: " + status);

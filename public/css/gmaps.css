@@ -78,7 +78,8 @@ button {
     margin-top: 5px;
 }
 
-#nameRouteModal {
+#nameRouteModal,
+#changeCityModal {
     padding-top: 15%;
     vertical-align: middle;
 }
