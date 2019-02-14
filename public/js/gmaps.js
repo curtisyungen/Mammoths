@@ -61,6 +61,19 @@ function initMap() {
 
     directionsDisplay.setMap(map);
 
+    // Display info box
+    // ======================================================
+
+    var content = "Click on map to draw route";
+
+    infoWindow = new google.maps.InfoWindow({
+        content: content,
+    });
+
+    google.maps.event.addListener(map,'mousemove',function(event){
+        infoWindow.setPosition(event.latLng);
+    });
+
     // Calculate and Draw Routes
     // ======================================================
 
@@ -103,21 +116,6 @@ function initMap() {
     $("#undoLast").on("click", undoLast);
     $("#loopRoute").on("click", loopRoute);
 }
-
-// MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
-// ======================================================
-
-$("#map").on("mouseover", function() {
-    var content = "Click on map to draw route";
-
-    infoWindow = new google.maps.InfoWindow({
-        content: content,
-    });
-});
-
-google.maps.event.addListener(map,'mousemove',function(event){
-    infoWindow.setPosition(event.latLng);
-});
 
 // MAP BOX CONTROLS: ENABLE/DISABLE BUTTONS
 // ======================================================
