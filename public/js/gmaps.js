@@ -160,7 +160,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     // Cut off origin and destination to avoid duplication
     var stops = [];
     for (var i=1; i<wayPoints.length-1; i++) {
-        stops.push(wayPoints[i].location);
+        stops.push(wayPoints[i]);
     }
     
     distance = 0;
