@@ -77,6 +77,7 @@ function initMap() {
 
         wayPoints.push({
             location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+            stopover: false
         });
 
         // If this is the first point, put a marker there
