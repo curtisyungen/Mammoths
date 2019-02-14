@@ -239,6 +239,7 @@ $("#closeChangeCityModal").on("click", function(event) {
     event.preventDefault();
 
     var city = $("#modal-cityName").val().trim();
+    $("#modal-cityName").val("");
 
     if (city != null && city != "") {
         $("#changeCityModal").hide();
@@ -252,7 +253,8 @@ $("#closeChangeCityModal").on("click", function(event) {
 // Event handler to cancel and close modal without changing city
 $("#cancelChangeCityModal").on("click", function(event) {
     event.preventDefault();
-
+    
+    $("#modal-cityName").val("");
     $("#changeCityModal").hide();
 });
 
@@ -263,7 +265,7 @@ function changeCity(city) {
     geocoder.geocode({"address": city}, function(results, status) {
         if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
-            map.setZoom(12);
+            map.setZoom(13);
         } 
         else {
             alert("Geocode error: " + status);
