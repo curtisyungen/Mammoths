@@ -168,7 +168,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         travelMode: 'WALKING'
     },
         function (response, status) {
-            // console.log(response);
+            console.log(response);
 
             // Sum up the distance (in meters) of each leg of route
             for (var i = 0; i < response.routes[0].legs.length; i++) {
