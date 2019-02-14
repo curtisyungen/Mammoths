@@ -289,13 +289,12 @@ function setConfirmMsg(key) {
 
 function loopRoute() {
 
-    var reverseWayPoints = wayPoints.reverse();
-    var length = reverseWayPoints.length; // So that length doesn't update in for loop
-    console.log(wayPoints);
-    console.log(reverseWayPoints);
+    var wayPointCopy = wayPoints;
+    var length = wayPointCopy.length; // So that length doesn't update in for loop
+
     // Add reversed way points onto route
-    for (var i=1; i<length; i++) {
-        wayPoints.push(reverseWayPoints[i].location);
+    for (var i=length; i>0; i++) {
+        wayPoints.push(wayPointCopy[i]);
     }
 
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
