@@ -8,7 +8,6 @@ var distance;
 var startIcon;
 var endIcon;
 var map;
-var infoWindow;
 
 // USER INFO ON SIGN IN
 // ========================================
@@ -19,7 +18,7 @@ var user = {
     userName: localStorage.getItem("userName"),
 };
 
-console.log("userid" + user.userId);
+//console.log("userid" + user.userId);
 
 
 // INITIALIZE MAP
@@ -71,8 +70,6 @@ function initMap() {
     // Listen for user clicks on map
     // Calculate and update directions display
     google.maps.event.addListener(map, 'click', function (event) {
-
-        infoWindow.close();
 
         // Clear save confirmation message
         setConfirmMsg("clear");
@@ -176,7 +173,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         travelMode: 'WALKING'
     },
         function (response, status) {
-            console.log(response);
+            //console.log(response);
 
             // Sum up the distance (in meters) of each leg of route
             for (var i = 0; i < response.routes[0].legs.length; i++) {
