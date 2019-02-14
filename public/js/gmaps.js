@@ -338,6 +338,9 @@ function loopRoute() {
         wayPoints.push(wayPointCopy[i]);
     }
 
+    console.log(wayPoints);
+    return;
+
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
 
