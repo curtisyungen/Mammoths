@@ -333,9 +333,6 @@ function loopRoute() {
     var wayPointCopy = wayPoints;
     var length = wayPointCopy.length; // So that length doesn't update in for loop
 
-
-    console.log(wayPointCopy);
-    return;
     // Add reversed way points onto route
     for (var i=length; i>0; i--) {
         wayPoints.push(wayPointCopy[i]);
