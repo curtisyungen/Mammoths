@@ -229,8 +229,7 @@ var API = {
 function openModal(event) {
     event.preventDefault();
 
-    var modal = $("#nameRouteModal");
-    modal.show();
+    $("#nameRouteModal").show();
     $("#modal-routeName").focus();
 }
 
@@ -243,7 +242,12 @@ $("#closeNameRouteModal").on("click", function(event) {
     var name = $("#modal-routeName").val().trim();
     var location = $("#modal-location").val().trim();
 
-    saveRoute(name, location);
+    if (name != null && name != "") {
+        saveRoute(name, location);
+    }
+    else {
+        alert("Please enter a name for this route.");
+    }
 });
 
 // Event handler to cancel and close modal without saving route
@@ -267,7 +271,6 @@ function saveRoute(routeName, location) {
     }
 
     if (routeName != null & routeName != "") {
-        console.log("Saving...");
 
         API.saveRoute(newRoute);
 

@@ -18,6 +18,7 @@ button {
 #cancelNameRouteModal {
     color: red;
     float: right;
+    margin-left: 5px;
 }
 
 #closeNameRouteModal {
