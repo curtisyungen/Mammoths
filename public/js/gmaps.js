@@ -79,10 +79,6 @@ function initMap() {
             location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
         });
 
-        for (var i in wayPoints) {
-            console.log(wayPoints[i].location);
-        }
-
         // If this is the first point, put a marker there
         if (wayPoints.length == 1) {
             startIcon = getStartIcon(wayPoints[0].location);
@@ -172,7 +168,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         travelMode: 'WALKING'
     },
         function (response, status) {
-            //console.log(response);
+            console.log(response);
 
             // Sum up the distance (in meters) of each leg of route
             for (var i = 0; i < response.routes[0].legs.length; i++) {
@@ -194,7 +190,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
             if (endIcon != null) {
                 endIcon.setMap(null);
             }
-            endIcon = getEndIcon(destination.location);
+            endIcon = getEndIcon(destination);
         });
 }
 
