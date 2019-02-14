@@ -77,10 +77,11 @@
                             <div id="distance">0.0 mi.</div>
                         </div>
                         <div id="buttonDiv">
-                            <button id="saveRoute">Save Route</button><br>
-                            <button id="undoLast">Undo Last</button><br>
-                            <button id="loopRoute">Loop Route</button><br>
-                            <button id="clearRoute">Clear Route</button>
+                            <button class="mapButton" id="changeCity">Change City</button><br>
+                            <button class="mapButton" id="saveRoute">Save Route</button><br>
+                            <button class="mapButton" id="undoLast">Undo Last</button><br>
+                            <button class="mapButton" id="loopRoute">Loop Route</button><br>
+                            <button class="mapButton" id="clearRoute">Clear Route</button>
                         </div>
                         <div id="confirmSave"></div>
                         
@@ -252,7 +253,7 @@
     <div class="modal-background modalClose"></div>
     <div class="modal-content ">
         <form class="box">
-            <label class="label">Route Name</label>
+            <label class="label">Route Name*</label>
             <input class="input is-primary" type="text" id="modal-routeName" autocomplete="off" required>
 
             <label class="label" id="modal-locationLabel">Location</label>
