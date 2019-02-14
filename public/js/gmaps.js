@@ -284,22 +284,6 @@ function setConfirmMsg(key) {
     $("#confirmSave").text(message);
 }
 
-// LOOP ROUTE (OUT AND BACK)
-// ======================================================
-
-function loopRoute() {
-
-    var wayPointCopy = wayPoints;
-    var length = wayPointCopy.length; // So that length doesn't update in for loop
-
-    // Add reversed way points onto route
-    for (var i=length; i>0; i--) {
-        wayPoints.push(wayPointCopy[i]);
-    }
-
-    calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
-}
-
 // LOAD ROUTE
 // ======================================================
 
@@ -339,6 +323,25 @@ function loadRoute() {
         // Draw route on map
         calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
     });
+}
+
+// LOOP ROUTE (OUT AND BACK)
+// ======================================================
+
+function loopRoute() {
+
+    var wayPointCopy = wayPoints;
+    var length = wayPointCopy.length; // So that length doesn't update in for loop
+
+
+    console.log(wayPointCopy);
+    return;
+    // Add reversed way points onto route
+    for (var i=length; i>0; i--) {
+        wayPoints.push(wayPointCopy[i]);
+    }
+
+    calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
 }
 
 // UNDO LAST
