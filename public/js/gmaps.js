@@ -155,10 +155,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     distance = 0;
     var meters = 0;
     const metersToMiles = 0.000621371192;
-    var destination = wayPoints[wayPoints.length - 1];
+    var origin = wayPoints[0].location;
+    var destination = wayPoints[wayPoints.length - 1].location;
 
     directionsService.route({
-        origin: wayPoints[0],
+        origin: origin,
         waypoints: wayPoints,
         destination: destination,
         optimizeWaypoints: false,
