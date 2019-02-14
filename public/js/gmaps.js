@@ -156,12 +156,18 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     
     var origin = wayPoints[0].location;
     var destination = wayPoints[wayPoints.length - 1].location;
+
+    // Cut off origin and destination to avoid duplication
+    var stops;
+    for (var i=1; i<wayPoints.length-1; i++) {
+        stops.push(wayPoints[i]);
+    }
     
     distance = 0;
 
     directionsService.route({
         origin: origin,
-        waypoints: wayPoints,
+        waypoints: stops,
         destination: destination,
         optimizeWaypoints: false,
         provideRouteAlternatives: false,
