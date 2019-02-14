@@ -17,6 +17,11 @@ button {
 
 #cancelNameRouteModal {
     color: red;
+    float: right;
+}
+
+#closeNameRouteModal {
+    float: right;
 }
 
 #confirmSave {
