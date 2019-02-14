@@ -15,6 +15,10 @@ button {
     padding: 5px;
 }
 
+#cancelNameRouteModal {
+    color: red;
+}
+
 #confirmSave {
     font-size: 12px;
     margin-bottom: -5px;
@@ -83,8 +87,4 @@ button {
 #wrapper {
     height: 100%;
     position: relative;
-}
-
-.gm-style .gm-style-iw-c {
-    color: black;
 }

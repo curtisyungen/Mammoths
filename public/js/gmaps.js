@@ -60,25 +60,6 @@ function initMap() {
 
     directionsDisplay.setMap(map);
 
-    // Display info box
-    // ======================================================
-
-    var content = "Click on map to draw route";
-
-    infoWindow = new google.maps.InfoWindow({
-        content: content,
-        maxWidth: 125,
-        preserveViewport: true
-    });
-
-    infoWindow.open(map);
-
-    google.maps.event.addListener(map,'mousemove',function(event){
-        var infoWindowLoc = new google.maps.LatLng(event.latLng.lat()+0.00001, event.latLng.lng());
-
-        infoWindow.setPosition(infoWindowLoc);
-    });
-
     // Calculate and Draw Routes
     // ======================================================
 
@@ -266,6 +247,13 @@ $("#closeNameRouteModal").on("click", function(event) {
     var location = $("#modal-location").val().trim();
 
     saveRoute(name, location);
+});
+
+// Event handler to cancel and close modal without saving route
+$("#cancelNameRouteModal").on("click", function(event) {
+    event.preventDefault();
+
+    $("#nameRouteModal").hide();
 });
 
 // Save route to database
