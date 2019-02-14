@@ -76,7 +76,7 @@ function initMap() {
         setConfirmMsg("clear");
 
         wayPoints.push({
-            location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
+            location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
         });
 
         // If this is the first point, put a marker there
@@ -154,11 +154,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     distance = 0;
     var meters = 0;
     const metersToMiles = 0.000621371192;
-    var origin = wayPoints[0].location;
-    var destination = wayPoints[wayPoints.length - 1].location;
+    var destination = wayPoints[wayPoints.length - 1];
 
     directionsService.route({
-        origin: origin,
+        origin: wayPoints[0],
         waypoints: wayPoints,
         destination: destination,
         optimizeWaypoints: false,

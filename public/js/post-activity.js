@@ -81,24 +81,27 @@ function showRoutes() {
     //console.log(data);
 
     for (var i=0; i<data.length; i++) {
-      var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " miles");
+      var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " miles, " + data[i].location);
 
       $("#showRoutes").append(route);
     }
   });
 };
 
-// AUTO-POPULATE DISTANCE FIELD
+// AUTO-POPULATE DISTANCE & LOCATION FIELDS
 // ========================================
 
-$("#showRoutes").on("change", populateDistance);
+$("#showRoutes").on("change", populateFields);
 
-function populateDistance() {
+function populateFields() {
   var routeText = $("#showRoutes").val().trim();
   var distanceText = routeText.split(":")[1];
   var distanceVal = parseFloat(distanceText.split(" ")[1]);
 
+  var locationText = routeText.split(",")[1].trim();
+
   $("#distanceForm").val(distanceVal);
+  $("#locationForm").val(locationText);
 }
 
 // CALCULATE MILE PACE
@@ -175,7 +178,6 @@ var handleFormSubmit = function (event) {
     refreshRuns();
   });
   
-
   // Empty form fields
   $runDate.val("");
   $runDistance.val("");
@@ -210,7 +212,6 @@ var handleDeleteBtnClick = function () {
 
 $submitBtn.on("click", handleFormSubmit);
 $("#run-list").on("click", ".delete", handleDeleteBtnClick);
-
 
 // GOOGLE SIGN OUT
 // ========================================
