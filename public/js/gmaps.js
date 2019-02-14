@@ -160,7 +160,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     // Cut off origin and destination to avoid duplication
     var stops = [];
     for (var i=1; i<wayPoints.length-1; i++) {
-        stops.push(wayPoints[i]);
+        stops.push(wayPoints[i].location);
     }
     
     distance = 0;
@@ -291,10 +291,11 @@ function loopRoute() {
 
     var reverseWayPoints = wayPoints.reverse();
     var length = reverseWayPoints.length; // So that length doesn't update in for loop
-
+    console.log(wayPoints);
+    console.log(reverseWayPoints);
     // Add reversed way points onto route
-    for (var i = 0; i < length-1; i++) {
-        wayPoints.push(reverseWayPoints[i]);
+    for (var i=1; i<length; i++) {
+        wayPoints.push(reverseWayPoints[i].location);
     }
 
     calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoints);
