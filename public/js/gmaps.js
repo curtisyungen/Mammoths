@@ -67,7 +67,6 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow({
         content: content,
-        pixelOffset: -55,
         maxWidth: 125,
         preserveViewport: true
     });
@@ -75,6 +74,7 @@ function initMap() {
     infoWindow.open(map);
 
     google.maps.event.addListener(map,'mousemove',function(event){
+        console.log(event.latLng);
         infoWindow.setPosition(event.latLng);
     });
 
