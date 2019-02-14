@@ -70,6 +70,8 @@ function initMap() {
         content: content,
     });
 
+    infoWindow.open(map);
+
     google.maps.event.addListener(map,'mousemove',function(event){
         infoWindow.setPosition(event.latLng);
     });
@@ -85,6 +87,8 @@ function initMap() {
     // Listen for user clicks on map
     // Calculate and update directions display
     google.maps.event.addListener(map, 'click', function (event) {
+
+        infoWindow.close();
 
         // Clear save confirmation message
         setConfirmMsg("clear");
