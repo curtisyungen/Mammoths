@@ -160,7 +160,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
     distance = 0;
 
     for (var i in wayPoints) {
-        console.log(wayPoints[i].location);
+        console.log(wayPoints[i].location.lat);
     }
 
     directionsService.route({
