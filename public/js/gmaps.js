@@ -74,7 +74,9 @@ function initMap() {
     infoWindow.open(map);
 
     google.maps.event.addListener(map,'mousemove',function(event){
-        infoWindow.setPosition(event.latLng.lat()+0.005, event.latLng.lng());
+        var infoWindowLoc = new google.maps.LatLng(event.latLng.lat()+0.005, event.latLng.lng());
+
+        infoWindow.setPosition(infoWindowLoc);
     });
 
     // Calculate and Draw Routes
