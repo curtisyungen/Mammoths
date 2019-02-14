@@ -67,7 +67,7 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow({
         content: content,
-        pixelOffset: -5,
+        pixelOffset: -55,
         maxWidth: 125,
         preserveViewport: true
     });
