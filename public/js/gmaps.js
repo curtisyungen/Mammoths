@@ -96,6 +96,7 @@ function initMap() {
     // Event handlers for Map Control Buttons
     // ======================================================
 
+    $("#changeCity").on("click", openCityModal);
     $("#saveRoute").on("click", openModal);
     $("#clearRoute").on("click", clearRoute);
     $("#undoLast").on("click", undoLast);
@@ -221,6 +222,52 @@ var API = {
         });
     }
 };
+
+// CHANGE CITY
+// ======================================================
+
+// Open modal to enter city name
+function openCityModal(event) {
+    event.preventDefault();
+
+    $("#changeCityModal").show();
+    $("#modal-cityName").focus();
+}
+
+// Event handler to close modal and change city
+$("#closeChangeCityModal").on("click", function(event) {
+    event.preventDefault();
+
+    var city = $("#modal-cityName").val().trim();
+
+    if (city != null && city != "") {
+        $("#changeCityModal").hide();
+        changeCity(city);
+    }
+    else {
+        alert("Please enter a name for this route.");
+    }
+});
+
+// Event handler to cancel and close modal without changing city
+$("#cancelChangeCityModal").on("click", function(event) {
+    event.preventDefault();
+
+    $("#changeCityModal").hide();
+});
+
+function changeCity(city) {
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({"address": city}, function(results, status) {
+        if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+        } 
+        else {
+            alert("Geocode error: " + status);
+        }
+    });
+}
 
 // SAVE ROUTE
 // ======================================================

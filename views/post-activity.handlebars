@@ -266,6 +266,22 @@
     </div>    
 </div>
 
+{{!-- Change City Modal --}}
+
+<div class="modal" id="changeCityModal">
+    <div class="modal-background modalClose"></div>
+    <div class="modal-content ">
+        <form class="box">
+            <label class="label">City*</label>
+            <input class="input is-primary" type="text" id="modal-cityName" autocomplete="off" required>
+
+            {{!-- Buttons flipped due to float right property --}}
+            <button id="cancelChangeCityModal">Cancel</button>
+            <button id="closeChangeCityModal">Submit</button>
+        </form>
+    </div>    
+</div>
+
 {{!-- Javascript, Jquery --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/post-activity.js"></script>

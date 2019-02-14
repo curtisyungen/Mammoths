@@ -15,13 +15,15 @@ button {
     padding: 5px;
 }
 
-#cancelNameRouteModal {
+#cancelNameRouteModal,
+#cancelChangeCityModal {
     color: red;
     float: right;
     margin-left: 5px;
 }
 
-#closeNameRouteModal {
+#closeNameRouteModal,
+#closeChangeCityModal {
     float: right;
 }
 
@@ -50,6 +52,10 @@ button {
 #map {
     height: 100%;
     width: 100%;
+}
+
+.mapButton {
+    font-size: 14px;
 }
 
 #mapControl {
