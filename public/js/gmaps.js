@@ -161,6 +161,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         waypoints: wayPoints,
         destination: destination,
         optimizeWaypoints: false,
+        alternatives: false,
         travelMode: 'WALKING'
     },
         function (response, status) {
