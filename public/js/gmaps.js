@@ -52,7 +52,7 @@ function initMap() {
 
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer({
-        preserveViewport: true,
+        // preserveViewport: true,
         suppressMarkers: true
     });
 
