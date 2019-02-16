@@ -20,18 +20,6 @@
                             <a class='navbar-link' href="/home">
                                 Dashboard
                             </a>
-
-                            <div class='navbar-dropdown'>
-                                <a class='navbar-item'>
-                                    Reports
-                                </a>
-                                <a class='navbar-item'>
-                                    History
-                                </a>
-                                <a class='navbar-item'>
-                                    Plan
-                                </a>
-                            </div>
                         </div>
                         <a class="navbar-item" href="/friends">
                             Leaderboard
@@ -56,13 +44,19 @@
         </header>
     </div>
 
+    {{!-- View Filter Buttons --}}
+    <div id="viewFilterBtns">
+        <a class="viewRunFilter btn btn-dark" id="onlyMe">Only Me</a>
+        <a class="viewRunFilter btn btn-dark" id="showAllRuns">Show All</a>
+    </div>
+
     {{!-- Body --}}
     <div class="hero-body">
-
+        
         <div class="columns">
 
             {{!-- First Column --}}
-
+            
             <div class="column is-one-half" id="allRunsList"></div>
 
             {{!-- Second Column --}}

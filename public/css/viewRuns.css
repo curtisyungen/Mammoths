@@ -19,17 +19,14 @@ padding: 0;
 }
 
 .runDiv {
-    background: white;
+    background: lightgray;
     border: 1px solid black;
     border-radius: 12px;
     color: black;
     font-size: 14px;
     height: 35px;
     margin: 5px 0px 5px 0px;
-    overflow-x: auto;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px 5px 10px;
     width: 100%;
 }
 
@@ -45,3 +42,39 @@ padding: 0;
     background: none;
     display: inline;
 }
+
+.viewRunFilter {
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px;
+}
+
+#viewFilterBtns {
+    display: inline-block;
+    margin-bottom: -30px;
+    margin-left: 20px;
+    margin-top: 30px;
+    padding: 5px;
+}
+
+.dataSpan {
+    float: left;
+    margin-left: 15px;
+    max-width: 105px !important;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis !important;
+    vertical-align: middle;
+    white-space: nowrap !important;  
+    width: 100px; 
+}
+
+.dataSpan:first-child {
+    margin-left: 0px;
+}
+
+.deleteRun {
+    float: right;
+}
+
+

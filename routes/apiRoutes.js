@@ -12,8 +12,7 @@ module.exports = function (app) {
   app.get("/api/runs/:id", function (req, res) {
     db.Runs.findAll({
       where: { UserId: req.params.id },
-      order: [["date", "DESC"]],
-      limit: 15,
+      order: [["date", "DESC"]]
     }).then(function (dbRuns) {
       console.log(dbRuns);
       res.json(dbRuns);
