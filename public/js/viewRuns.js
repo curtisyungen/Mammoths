@@ -90,8 +90,6 @@ function displayAllRunsList(runData) {
     })
         .then(function (response) {
 
-            console.log(runData.length);
-
             if (runData.length == 0) {
                 $("#allRunsList").text("No runs to display.");
             }
@@ -181,7 +179,7 @@ function deleteRun() {
         type: "DELETE"
     })
         .then(function (response) {
-            console.log(response);
+            //console.log(response);
 
             // Empty runs list to prevent duplication of entries
             $("#allRunsList").empty();

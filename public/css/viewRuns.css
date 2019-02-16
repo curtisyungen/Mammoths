@@ -19,7 +19,7 @@ padding: 0;
 }
 
 .runDiv {
-    background: lightgray;
+    background: white;
     border: 1px solid black;
     border-radius: 12px;
     color: black;
@@ -58,7 +58,6 @@ padding: 0;
 }
 
 .dataSpan {
-    float: left;
     margin-left: 15px;
     max-width: 105px !important;
     overflow: hidden;
