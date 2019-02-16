@@ -99,3 +99,38 @@ function compare(a, b) {
     return 0;
 }
 
+// GOOGLE SIGN OUT
+// ========================================
+
+var auth2;
+
+window.onLoadCallback = function () {
+  gapi.load('auth2', function () {
+    auth2 = gapi.auth2.init({
+      client_id: '894965613215-inve9sto28jrujo1kshpeao4gm2e8hdb.apps.googleusercontent.com',
+      scope: 'profile',
+      fetch_basic_profile: false
+    });
+  });
+}
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+    document.location.href = '/';
+  });
+}
+
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+}); 
+
