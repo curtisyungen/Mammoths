@@ -43,7 +43,7 @@ var refreshRuns = function () {
       console.log(run);
       var $recentRun = $("<div class='recentRunDiv'>").html(
         run.date + ": &nbsp&nbsp&nbsp&nbsp" 
-        + run.distance + " miles &nbsp&nbsp&nbsp&nbsp" 
+        + run.distance + " mi. &nbsp&nbsp&nbsp&nbsp" 
         + run.duration + "&nbsp&nbsp&nbsp&nbsp " 
         + run.location);
 
@@ -94,7 +94,7 @@ function showRoutes() {
     $showRoutes.append(`<option val="0" id="0">`);
 
     for (var i=0; i<data.length; i++) {
-      var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " miles, " + data[i].location);
+      var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " mi., " + data[i].location);
       
       route.attr("id", data[i].id);
 
