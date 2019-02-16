@@ -41,7 +41,7 @@ var refreshRuns = function () {
     //console.log(data);
     var $runs = data.map(function (run) {
       console.log(run);
-      var $recentRun = $("<a>").html(
+      var $recentRun = $("<div class='recentRunDiv'>").html(
         run.date + ": &nbsp&nbsp&nbsp&nbsp" 
         + run.distance + " miles &nbsp&nbsp&nbsp&nbsp" 
         + run.duration + "&nbsp&nbsp&nbsp&nbsp " 

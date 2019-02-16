@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+
+  <title>Draw Route</title>
+
+  <!-- CSS  -->
+  <link rel="stylesheet" href="./gmaps.css">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Wrapper for Map Display -->
+  <div id="wrapper">
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Map Control Box -->
+    <div id="mapControl">
+
+      <div id="distanceDiv">
+        DISTANCE
+        <div id="distance">0.0 mi.</div>
+      </div>
+      
+      <div id="buttonDiv">
+        <button id="saveRoute">Save Route</button><br>
+        <button id="undoLast">Undo Last</button><br>
+        <button id="clearRoute">Clear Route</button>
+        <!-- <button id="loadRoute">Load Route</button>  -->
+      </div>
+
+    </div>
+    
+  </div>
+
+  <!-- Javascript -->
+  <script src="./gmaps.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB66kReNVkNXq1PYpmqbsmNUfrGWVx0pVg&libraries=drawing&callback=initMap"
+    async defer></script>
+
+</body>
+
+</html>
