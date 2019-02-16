@@ -81,7 +81,7 @@
 
                 {{!-- Running Form --}}
                 <div id="runningForm">
-                    <form class = "center">
+                    <form class="center">
                         <div class="form-group mx-sm-5 mb-2" action="/api/runs" method="POST">
 
                             {{!-- Date --}}
@@ -173,7 +173,6 @@
         </div>
     </div>
 
-
     {{!-- Footer --}}
     <div class="hero-foot">
         <nav class="tabs is-boxed is-fullwidth">
@@ -188,80 +187,80 @@
         </nav>
     </div>
 
+    {{!-- Log In Modal --}}
+
+    <div class="modal">
+        <div class="modal-background modalClose"></div>
+        <div class="modal-content ">
+            <!-- Any other Bulma elements you want -->
+            <form class="box">
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-primary" type="text" placeholder="Username" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                        <input class="input" type="password" placeholder="••••••••" required>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+                </div>
+            </form>
+        </div>
+
+        <button class="modal-close is-large modalClose" aria-label="close"></button>
+
+    </div>
+
+    {{!-- Name Route Upon Saving Modal --}}
+
+    <div class="modal" id="nameRouteModal">
+        <div class="modal-background modalClose"></div>
+        <div class="modal-content ">
+            <form class="box">
+                <label class="label">Route Name*</label>
+                <input class="input is-primary" type="text" id="modal-routeName" autocomplete="off" required>
+
+                <label class="label" id="modal-locationLabel">Location</label>
+                <input class="input is-primary" type="text" id="modal-location" autocomplete="off">
+
+                {{!-- Buttons flipped due to float right property --}}
+                <button id="cancelNameRouteModal">Cancel</button>
+                <button id="closeNameRouteModal" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    {{!-- Search Address Modal --}}
+
+    <div class="modal" id="searchAddressModal">
+        <div class="modal-background modalClose"></div>
+        <div class="modal-content ">
+            <form class="box">
+                <label class="label">Enter Full Address or City</label>
+                <input class="input is-primary" type="text" id="modal-address" autocomplete="off">
+
+                {{!-- Buttons flipped due to float right property --}}
+                <button id="cancelAddressModal">Cancel</button>
+                <button id="closeAddressModal" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
 </section>
-
-{{!-- Log In Modal --}}
-
-<div class="modal">
-    <div class="modal-background modalClose"></div>
-    <div class="modal-content ">
-        <!-- Any other Bulma elements you want -->
-        <form class="box">
-            <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-left">
-                    <input class="input is-primary" type="text" placeholder="Username" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Password</label>
-                <div class="control has-icons-left">
-                    <input class="input" type="password" placeholder="••••••••" required>
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-lock"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox">
-                    Remember me
-                </label>
-            </div>
-        </form>
-    </div>
-
-    <button class="modal-close is-large modalClose" aria-label="close"></button>
-
-</div>
-
-{{!-- Name Route Upon Saving Modal --}}
-
-<div class="modal" id="nameRouteModal">
-    <div class="modal-background modalClose"></div>
-    <div class="modal-content ">
-        <form class="box">
-            <label class="label">Route Name*</label>
-            <input class="input is-primary" type="text" id="modal-routeName" autocomplete="off" required>
-
-            <label class="label" id="modal-locationLabel">Location</label>
-            <input class="input is-primary" type="text" id="modal-location" autocomplete="off">
-
-            {{!-- Buttons flipped due to float right property --}}
-            <button id="cancelNameRouteModal">Cancel</button>
-            <button id="closeNameRouteModal" type="submit">Submit</button>
-        </form>
-    </div>
-</div>
-
-{{!-- Search Address Modal --}}
-
-<div class="modal" id="searchAddressModal">
-    <div class="modal-background modalClose"></div>
-    <div class="modal-content ">
-        <form class="box">
-            <label class="label">Enter Full Address or City</label>
-            <input class="input is-primary" type="text" id="modal-address" autocomplete="off">
-
-            {{!-- Buttons flipped due to float right property --}}
-            <button id="cancelAddressModal">Cancel</button>
-            <button id="closeAddressModal" type="submit">Submit</button>
-        </form>
-    </div>
-</div>
 
 {{!-- Javascript, Jquery --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
