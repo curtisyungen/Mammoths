@@ -1,0 +1,112 @@
+<section class="hero is-primary is-fullheight">
+
+    {{!-- Header --}}
+    <div class="hero-head">
+
+        {{!-- Logo --}}
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="images/image.png" alt="Logo">
+            </a>
+        </div>
+
+        {{!-- Google Sign-in Button --}}
+        <div class="g-signin2" data-onsuccess="onSignIn" id="signIn"></div><br>
+
+        <div id="contactTitle">
+            <h1>Contact Us</h1>
+        </div>
+    </div>
+
+    {{!-- Body --}}
+    <div class="hero-body">
+
+        <div id="contactInfo">
+            <div class="person" id="vahe">
+                Vahe Minasyan
+                <p>vahe.minasyan2@gmail.com</p>
+            </div>
+            <div class="person" id="joseph">
+                Joseph Bizar
+                <p>fairy_luvr2001@aol.com</p>
+            </div><br>
+            <div class="person" id="bhavin">
+                Bhavin Shah
+                <p>bhavinshah@gmail.com</p>
+            </div>
+            <div class="person" id="curtis">
+                Curtis Yungen
+                <p>curtisyungen@gmail.com</p>
+            </div>
+        </div>
+
+    </div>
+
+    {{!-- CSS --}}
+    <style>
+
+        p {
+            font-size: 12px;
+        }
+
+        #contactTitle {
+            font-size: 48px;
+            text-align: center;
+        }
+
+        #contactInfo {
+            color: black;
+            font-size: 18px;
+            height: 455px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        .person {
+            background: rgb(51, 3, 121);
+            border: 1px solid black;
+            color: white;
+            display: inline-block;
+            font-size: 22px;
+            font-weight: 500;
+            height: 200px;
+            margin-bottom: 45px;
+            margin-top: -40px;
+            padding: 20px;
+            padding-top: 75px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .person:hover {
+            background: gold;
+            color: black;
+        }
+
+        .g-signin2 {
+            float: right;
+            margin-top: -42px;
+        }
+
+        .hero-foot {
+            margin-top: -50px;
+        }
+
+    </style>
+
+    {{!-- Footer --}}
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    <li><a>FAQ</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</section>

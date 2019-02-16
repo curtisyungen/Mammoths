@@ -1,0 +1,87 @@
+<section class="hero is-primary is-fullheight">
+
+    {{!-- Header --}}
+    <div class="hero-head">
+
+        {{!-- Logo --}}
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="images/image.png" alt="Logo">
+            </a>
+        </div>
+
+        {{!-- Google Sign-in Button --}}
+        <div class="g-signin2" data-onsuccess="onSignIn" id="signIn"></div><br>
+
+    </div>
+
+    {{!-- Body --}}
+    <div class="hero-body">
+
+        <div id="mammothInfo">
+            <div id="mammothImgDiv">
+                <img id="mammothImg"
+                    src="http://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/cc_Woolly_mammoth_16x9.jpg?itok=y4DbroxF">
+            </div>
+            A mammoth is any species of the extinct genus Mammuthus, one of the many genera that make up the order of
+            trunked mammals called proboscideans. The various species of mammoth were commonly equipped with long,
+            curved tusks and, in northern species, a covering of long hair. They lived from the Pliocene epoch (from
+            around 5 million years ago) into the Holocene at about 4,000 years ago, and various species existed in
+            Africa, Europe, Asia, and North America. They were members of the family Elephantidae, which also contains
+            the two genera of modern elephants and their ancestors.<br><br>
+
+            The oldest representative of Mammuthus, the South African mammoth (M. subplanifrons), appeared around 5
+            million years ago during the early Pliocene in what is now southern and eastern Africa. Descendant species
+            of these mammoths moved north and continued to propagate into numerous subsequent species, eventually
+            covering most of Eurasia before extending into the Americas at least 600,000 years ago. The last species to
+            emerge, the woolly mammoth (M. primigenius), developed about 400,000 years ago in East Asia, with some
+            surviving on Russia's Wrangel Island in the Arctic Ocean until as recently as roughly 3,700 to 4,000 years
+            ago, still extant during the construction of the Great Pyramid of ancient Egypt.
+            <br><br>
+            -- Wikipedia
+        </div>
+    </div>
+
+    {{!-- CSS --}}
+    <style>
+        #mammothImgDiv {
+            height: 350px;
+            margin-top: -50px;
+            margin-bottom: -80px;
+            text-align: center;
+        }
+
+        #mammothImg {
+            width: 450px;
+        }
+
+        #mammothInfo {
+            font-size: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: -55px;
+            text-align: justify;
+            width: 650px;
+        }
+
+        .g-signin2 {
+            float: right;
+            margin-top: -42px;
+        }
+    </style>
+
+    {{!-- Footer --}}
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    <li><a>FAQ</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</section>

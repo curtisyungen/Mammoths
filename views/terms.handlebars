@@ -1,0 +1,51 @@
+<section class="hero is-primary is-fullheight">
+
+    {{!-- Header --}}
+    <div class="hero-head">
+
+        {{!-- Logo --}}
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="images/image.png" alt="Logo">
+            </a>
+        </div>
+
+        {{!-- Google Sign-in Button --}}
+        <div class="g-signin2" data-onsuccess="onSignIn" id="signIn"></div><br>
+
+    </div>
+
+    {{!-- Body --}}
+    <div class="hero-body">
+        <p id="rule">Don't do anything illegal.</p>
+    </div>
+
+    {{!-- CSS --}}
+    <style>
+        #rule {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 150px;
+        }
+
+        .g-signin2 {
+            float: right;
+            margin-top: -42px;
+        }
+    </style>
+
+    {{!-- Footer --}}
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container">
+                <ul>
+                    <li><a>FAQ</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</section>

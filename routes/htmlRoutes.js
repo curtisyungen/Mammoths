@@ -2,14 +2,34 @@ var db = require("../models");
 
 module.exports = function (app) {
 
+  // Login Page
+  app.get("/", function(req, res) {
+    res.render("login")
+  });
+
+  // Home Page
   app.get("/home", function(req, res) {
     res.render("index")
   });
 
-  
-  app.get("/", function(req, res) {
-    res.render("login")
+  app.get("/friends", function(req, res) {
+    res.render("friends");
   });
+
+  // Contact Page
+  app.get("/contact", function(req, res) {
+    res.render("contact");
+  })
+
+  // About Page
+  app.get("/about", function(req, res) {
+    res.render("about");
+  })
+
+  // Terms of Service Page
+  app.get("/terms", function(req, res) {
+    res.render("terms");
+  })
 
   // Load example page and pass in an example by id
   app.get("/runs/:id", function (req, res) {
@@ -20,7 +40,12 @@ module.exports = function (app) {
     });
   });
 
-  // Get Post Activity page
+  // View All Runs Page
+  app.get("/viewRuns", function (req, res) {
+      res.render("viewRuns"); 
+  });
+
+  // Post Activity Page
   app.get("/post-activity", function (req, res) {
     res.render("post-activity");
   });
@@ -28,7 +53,6 @@ module.exports = function (app) {
   // app.get("api-user", function (req, res) {
   //   //res.render("post-activity");
   // });
-
 
   // Get Plan page
   app.get("/plan", function (req, res) {

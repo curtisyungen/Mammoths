@@ -1,41 +1,39 @@
 <section class="hero is-primary is-fullheight">
   <br><br>
+
+  {{!-- Header --}}
+
   <div class="hero-head">
-    <header class="navbar">
-      <div class="container">
-        <div class="navbar-brand" id="loginNavbar">
-          <h1> Welcome to Mammoths!</h1>
-        </div>
-      </div>
-    </header>
-  </div>
-
-  <div class="hero-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-4">
-
-          <div>
-            <img src="images/image.png" alt="Logo" id="logoImage">
-          </div>
-
-          <div style="text-align:center" class="g-signin2" data-onsuccess="onSignIn" id="signIn">
-          </div>
-
-        </div>
-
-      </div>
+    {{!-- Google Sign-in Button --}}
+    <div class="g-signin2" data-onsuccess="onSignIn" id="signIn"></div><br><br>
+    <div>
+      <h1 id="loginPageTitle">MAMMOTH</h1>
+      <h4 id="slogan">Outrun the extinction</h4>
     </div>
   </div>
+
+  {{!-- Body --}}
+
+  <div class="hero-body" id="loginPageBody">
+
+    {{!-- Logo Image --}}
+    <div id="logoDiv">
+      <img src="images/image.png" alt="Logo" id="logoImage">
+    </div>
+
+  </div>
+
+
+  {{!-- Footer --}}
 
   <div class="hero-foot">
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
           <li><a>FAQ</a></li>
-          <li><a>Contact Us</a></li>
-          <li><a>About</a></li>
-          <li><a>Terms of Service</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
         </ul>
       </div>
     </nav>

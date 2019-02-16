@@ -16,14 +16,14 @@ button {
 }
 
 #cancelNameRouteModal,
-#cancelChangeCityModal {
+#cancelAddressModal {
     color: red;
     float: right;
     margin-left: 5px;
 }
 
 #closeNameRouteModal,
-#closeChangeCityModal {
+#closeAddressModal {
     float: right;
 }
 
@@ -55,7 +55,7 @@ button {
 }
 
 .mapButton {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #mapControl {
@@ -79,7 +79,7 @@ button {
 }
 
 #nameRouteModal,
-#changeCityModal {
+#searchAddressModal {
     padding-top: 15%;
     vertical-align: middle;
 }
@@ -99,6 +99,10 @@ button {
     background: rgb(51, 0, 122);
     border: 1px solid black;
     padding: 15px 0px 15px 0px;
+}
+
+#showRoutes {
+    overflow-y: scroll;
 }
 
 #wrapper {

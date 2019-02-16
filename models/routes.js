@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     distance: DataTypes.FLOAT,
     wayPoints: DataTypes.STRING(10000),
     startIcon: DataTypes.STRING(500),
-    endIcon: DataTypes.STRING(500,)
+    endIcon: DataTypes.STRING(500)
   });
 
   Routes.associate = function(models) {
@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
+    });
+
+    Routes.hasMany(models.Runs, {
+      onDelete: "cascade"
     });
   };
 

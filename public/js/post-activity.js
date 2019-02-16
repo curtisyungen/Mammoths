@@ -12,6 +12,7 @@ var $runSurface = $("#surfaceForm");
 var $submitBtn = $("#submitRun");
 var $runList = $("#runList");
 var $newActivity = $("#newActivity");
+var $showRoutes = $("#showRoutes");
 
 // USER INFO ON SIGN IN
 // ========================================
@@ -23,7 +24,6 @@ var user = {
 };
 
 console.log("userid" + user.userId);
-
 
 // APPEND USER NAME TO THE NAV BAR
 $("#loggedInUser").append(user.userName)
@@ -40,23 +40,22 @@ var refreshRuns = function () {
   .then(function (data) {
     //console.log(data);
     var $runs = data.map(function (run) {
-      var $date = $("<a>").text("Date: " + run.date);
-      var $distance = $("<a>").text(" Distance: " + run.distance);
-      var $duration = $("<a>").text(" Duration: " + run.duration);
-      var $li = $("<li>")
+      console.log(run);
+      var $recentRun = $("<a>").html(
+        run.date + " &nbsp&nbsp&nbsp&nbsp" 
+        + run.distance + " miles &nbsp&nbsp&nbsp&nbsp" 
+        + run.duration + "&nbsp&nbsp&nbsp&nbsp " 
+        + run.location);
+
+      var $div = $("<div>")
         .attr({
-          class: "list-group-item",
           "data-id": run.id
         })
-        .append($date, $distance, $duration);
+        .addClass("recentRun")
+        .css("margin-bottom", "5px")
+        .append($recentRun);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
+      return $div;
     });
 
     $("#run-list").empty();
@@ -67,23 +66,39 @@ var refreshRuns = function () {
 refreshRuns();
 
 // LOAD EXISTING ROUTE (DROP DOWN MENU IN FORM)
-// ========================================
+// =============================================
 
+// Initial call to populate drop down menu
 showRoutes();
 
+// Update Load Existing Route drop down menu when clicked
+$showRoutes.on("mouseenter", checkShowRoutes);
+
+// Update routes only if the drop down menu is blank
+// This avoids erasing user's selection
+function checkShowRoutes() {
+  if ($showRoutes.val() == "") {
+    showRoutes();
+  }
+}
+
+// Update the drop down menu with all routes
 function showRoutes() {
 
   $.ajax({
-    url: "api/loadAllRoutes/",
+    url: "api/loadAllRoutes/" + user.userId,
     type: "GET"
   })
   .then(function (data) {
-    //console.log(data);
+    $showRoutes.empty();
+    $showRoutes.append(`<option val="0" id="0">`);
 
     for (var i=0; i<data.length; i++) {
       var route = $(`<option val=${data[i].name}>`).text(data[i].name + ": " + data[i].distance + " miles, " + data[i].location);
+      
+      route.attr("id", data[i].id);
 
-      $("#showRoutes").append(route);
+      $showRoutes.append(route);
     }
   });
 };
@@ -91,10 +106,11 @@ function showRoutes() {
 // AUTO-POPULATE DISTANCE & LOCATION FIELDS
 // ========================================
 
-$("#showRoutes").on("change", populateFields);
+$showRoutes.on("change", populateFields);
 
 function populateFields() {
-  var routeText = $("#showRoutes").val().trim();
+
+  var routeText = $showRoutes.val().trim();
   var distanceText = routeText.split(":")[1];
   var distanceVal = parseFloat(distanceText.split(" ")[1]);
 
@@ -131,12 +147,12 @@ function calculatePace() {
 
     // Adds a zero before the seconds figure
     // To avoid having a result such as "5:9" for the pace. Corrects to "5:09"
-    var addZero = "";
+    var addZeroSecs = "";
     if (paceSecs < 10) {
-      addZero = 0;
+      addZeroSecs = 0;
     }
 
-    $("#pace").text(` ${paceMins}:${addZero}${paceSecs}`);
+    $("#pace").text(` ${paceMins}:${addZeroSecs}${paceSecs}`);
   }
 }
 
@@ -146,15 +162,35 @@ function calculatePace() {
 var handleFormSubmit = function (event) {
   event.preventDefault();
 
-  var $runDuration = `${$runHours.val().trim()}:${$runMins.val().trim()}:${$runSecs.val().trim()}`;
+  var addZeroMins = "";
+  if ($runMins.val().trim().length < 2) {
+    addZeroMins = 0;
+  }
+
+  var $runDuration = `${$runHours.val().trim()}:${addZeroMins}${$runMins.val().trim()}:${$runSecs.val().trim()}`;
+
+  var routeId = $("#showRoutes :selected").attr("id");
+
+  // Default route ID if route is empty
+  if (routeId < 1 || routeId == "") {
+    routeId = null;
+  }
+
+  var routeName = $runRoute.val().trim();
+
+  // Default route name if route is empty
+  if (routeName == "" || routeName == null) {
+    routeName = "No route";
+  }
   
   var run = {
     date: $runDate.val().trim(),
     distance: $runDistance.val().trim(),
-    route: $runRoute.val(),
+    route: routeName,
     duration: $runDuration,
     location: $runLocation.val().trim(),
     surface: $runSurface.val().trim(),
+    RouteId: routeId,
     UserId: user.userId
   };
 
@@ -187,31 +223,15 @@ var handleFormSubmit = function (event) {
   $runSecs.val("");
   $runLocation.val("");
   $runSurface.val("");
+
+  // Clear map
+  clearRoute(event);
 };
 
-// DELETE RUN
-// ========================================
-
-var handleDeleteBtnClick = function () {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-    $.ajax({
-        url: "api/runs/" + idToDelete,
-        type: "DELETE"
-      })
-
-  .then(function () {
-    refreshRuns();
-  });
-}
-
-// EVENT HANDLERS: SUBMIT, DELETE
+// EVENT HANDLERS: SUBMIT RUN
 // ========================================
 
 $submitBtn.on("click", handleFormSubmit);
-$("#run-list").on("click", ".delete", handleDeleteBtnClick);
 
 // GOOGLE SIGN OUT
 // ========================================
@@ -235,3 +255,15 @@ function signOut() {
     document.location.href = '/';
   });
 }
+
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+}); 

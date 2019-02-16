@@ -8,11 +8,12 @@
                     <a class="navbar-item" href="/home">
                         <img src="images/image.png" alt="Logo">
                     </a>
-                    <span class="navbar-burger burger" data-target="navMenu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
+                    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
+                        aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
                 </div>
                 <div id="navMenu" class="navbar-menu">
                     <div class="navbar-start">
@@ -33,14 +34,14 @@
                                 </a>
                             </div>
                         </div>
-                        <a class="navbar-item">
-                            Friends
-                        </a>
-                        <a class="navbar-item">
-                            Challenge
+                        <a class="navbar-item" href="/friends">
+                            Leaderboard
                         </a>
                         <a class="navbar-item" id="newActivity" href="/post-activity">
-                            Post New Activity
+                            Post New Run
+                        </a>
+                        <a class="navbar-item" href="/viewRuns">
+                            View All Runs
                         </a>
                     </div>
                     <div class="navbar-end">
@@ -62,7 +63,7 @@
         <div class="columns">
 
             {{!-- First Column --}}
-            <div class="col-4">
+            <div class="column is-one-third">
 
                 {{!-- Map Display --}}
                 <div id="wrapper">
@@ -77,20 +78,20 @@
                             <div id="distance">0.0 mi.</div>
                         </div>
                         <div id="buttonDiv">
-                            <button class="mapButton" id="changeCity">Change City</button><br>
+                            <button class="mapButton" id="searchAddress">Search Address</button><br>
                             <button class="mapButton" id="saveRoute">Save Route</button><br>
                             <button class="mapButton" id="undoLast">Undo Last</button><br>
                             <button class="mapButton" id="loopRoute">Loop Route</button><br>
                             <button class="mapButton" id="clearRoute">Clear Route</button>
                         </div>
                         <div id="confirmSave"></div>
-                        
+
                     </div>
                 </div>
             </div>
 
             {{!-- Second Column column is-one-third --}}
-            <div class="col-4">
+            <div class="column is-one-third">
 
                 {{!-- Running Form --}}
                 <div id="runningForm">
@@ -103,9 +104,9 @@
                                 autocomplete="off"><br>
 
                             {{!-- Choose Existing Route --}}
-                            <label for="showRoutes">Choose Existing Route:</label>
+                            <label for="showRoutes">Your Past Routes:</label>
                             <select class="form-control" id="showRoutes" class="list-group">
-                                <option val="" selected></option>
+                                <option val="0" id="0" selected></option>
                             </select><br>
 
                             {{!-- Distance --}}
@@ -121,16 +122,16 @@
                                 placeholder="mm" autocomplete="off">
                             <input type="text" class="form-control duration" name="duration" id="seconds"
                                 placeholder="ss" autocomplete="off">
-                                
+
                             {{!-- Mile Pace --}}
                             {{!-- label and span flipped due to float right --}}
                             <span id="pace" name="pace"> 0:00</span>
-                            <label for="pace" id="paceLabel">Avg. Mile Pace:  </label> <br><br>
+                            <label for="pace" id="paceLabel">Avg. Mile Pace: </label> <br><br>
 
                             {{!-- Location --}}
                             <label for="location">Location: </label>
                             <input type="text" class="form-control" name="location" id="locationForm"
-                                placeholder="Neighborhood" autocomplete="off"><br>
+                                autocomplete="off"><br>
 
                             {{!-- Primary Surface --}}
                             <label for="surface">Primary Surface: </label>
@@ -156,42 +157,36 @@
             </div>
 
             {{!-- Third Column --}}
-            <div class="col-4">
-                <div class="row">
-                    <p id="top5Runs">Recent 5 Runs:</p>
-                    <ul id="run-list" class="list-group">
-                        {{#each runs}}
+            <div class="column is-one-third">
 
-                        <li data-id="{{this.id}}" class="list-group-item">
-                            <a>{{this.date}}</a>
-                            <a>{{this.distance}}</a>
-                            <a>{{this.duration}}</a>
-                            <button class="btn btn-danger float-right delete">ｘ</button>
-                        </li>
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-parent">
+                        <div class="tile is-child notification is-white">
+                            <p id="top5Runs">Your Recent Runs:</p>
 
-                        {{/each}}
-                    </ul>
-                </div>
-                <br><br>
-                <div class="row">
-                    <p id="top5Routes">Recent 5 Routes:</p>
-                    <ul id="route-list" class="list-group">
-                        {{#each routes}}
+                            {{!-- Run List --}}
+                            <ul id="run-list">
+                                {{#each runs}}
+                                {{!-- <span> --}}
+                                <li data-id="{{this.id}}">
+                                    {{this.date}}
+                                    {{this.distance}}
+                                    {{this.duration}}
+                                    <button class="btn btn-danger float-right delete">ｘ</button>
+                                </li>
+                                {{!-- </span> --}}
+                                {{/each}}
+                            </ul>
+                            </form>
+                        </div>
 
-                        <li data-id="{{this.id}}" class="list-group-item">
-                            <a>{{this.date}}</a>
-                            <a>{{this.distance}}</a>
-                            <button class="btn btn-danger float-right delete">ｘ</button>
-                        </li>
+                    </div>
 
-                        {{/each}}
-                    </ul>
-                    
                 </div>
             </div>
-
         </div>
     </div>
+
 
     {{!-- Footer --}}
     <div class="hero-foot">
@@ -199,9 +194,9 @@
             <div class="container">
                 <ul>
                     <li><a>FAQ</a></li>
-                    <li><a>Contact Us</a></li>
-                    <li><a>About</a></li>
-                    <li><a>Terms of Service</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
                 </ul>
             </div>
         </nav>
@@ -258,28 +253,28 @@
 
             <label class="label" id="modal-locationLabel">Location</label>
             <input class="input is-primary" type="text" id="modal-location" autocomplete="off">
-            
+
             {{!-- Buttons flipped due to float right property --}}
             <button id="cancelNameRouteModal">Cancel</button>
             <button id="closeNameRouteModal" type="submit">Submit</button>
         </form>
-    </div>    
+    </div>
 </div>
 
-{{!-- Change City Modal --}}
+{{!-- Search Address Modal --}}
 
-<div class="modal" id="changeCityModal">
+<div class="modal" id="searchAddressModal">
     <div class="modal-background modalClose"></div>
     <div class="modal-content ">
         <form class="box">
-            <label class="label">Enter City, State (ex.: Denver, CO)</label>
-            <input class="input is-primary" type="text" id="modal-cityName" autocomplete="off" required>
+            <label class="label">Enter Full Address or City</label>
+            <input class="input is-primary" type="text" id="modal-address" autocomplete="off">
 
             {{!-- Buttons flipped due to float right property --}}
-            <button id="cancelChangeCityModal">Cancel</button>
-            <button id="closeChangeCityModal" type="submit">Submit</button>
+            <button id="cancelAddressModal">Cancel</button>
+            <button id="closeAddressModal" type="submit">Submit</button>
         </form>
-    </div>    
+    </div>
 </div>
 
 {{!-- Javascript, Jquery --}}

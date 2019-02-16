@@ -24,8 +24,14 @@ var refreshRuns = function () {
     type: "GET"
   })
     .then(function (data) {
-      console.log(data);
-      for (var i = 0; i < data.length; i++) {
+
+      var length = 5;
+
+      if (data.length < length) {
+        length = data.length;
+      }
+
+      for (var i = length-1; i>=0; i--) {
         runTableDates.push(data[i].date);
         runTableDistances.push(data[i].distance);
       }
@@ -61,7 +67,7 @@ var refreshRuns = function () {
         options: {
           title: {
             display: true,
-            text: 'Miles Ran',
+            text: 'Last Five Runs',
             fontColor: "white"
           },
           legend: {
@@ -78,6 +84,7 @@ var refreshRuns = function () {
               }
             }],
             xAxes: [{
+              barThickness: 55,
               ticks: {
                 fontColor: "white"
               },
@@ -182,4 +189,17 @@ function signOut() {
     document.location.href = '/';
   });
 }
+
+
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
 

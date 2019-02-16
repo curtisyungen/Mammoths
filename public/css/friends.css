@@ -1,0 +1,40 @@
+label {
+    margin-right: 10px;
+}
+
+#summaryData {
+    max-height: 600px;
+    overflow-y: scroll;
+    padding: 15px;
+}
+
+.userTotalMiles {
+    background: rgb(51, 0, 122);
+    border: 1px solid black;
+    font-size: 24px;
+    margin: 0px auto 5px auto;
+    padding: 10px;
+    width: 400px;
+}
+
+.userTotalMiles:hover {
+    background: gold;
+    color: black;
+}
+
+#leaderboardTitle {
+    font-size: 48px;
+    text-align: center;
+    width: 100%;
+}
+
+#leaderboardSubtitle {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#leaderboardContainer {
+    text-align: center;
+    width: 100%;
+}

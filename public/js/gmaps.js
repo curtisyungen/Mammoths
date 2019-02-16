@@ -20,7 +20,6 @@ var user = {
 
 //console.log("userid" + user.userId);
 
-
 // INITIALIZE MAP
 // ======================================================
 
@@ -96,7 +95,7 @@ function initMap() {
     // Event handlers for Map Control Buttons
     // ======================================================
 
-    $("#changeCity").on("click", openCityModal);
+    $("#searchAddress").on("click", openAddressModal);
     $("#saveRoute").on("click", openModal);
     $("#clearRoute").on("click", clearRoute);
     $("#undoLast").on("click", undoLast);
@@ -135,7 +134,7 @@ function getStartIcon(position) {
 function getEndIcon(position) {
 
     // Google libraries of map marker icons
-    endIconImg = "http://www.google.com/mapfiles/dd-end.png";
+    var endIconImg = "http://www.google.com/mapfiles/dd-end.png";
 
     endIcon = new google.maps.Marker({
         position: position,
@@ -223,49 +222,49 @@ var API = {
     }
 };
 
-// CHANGE CITY
+// SEARCH ADDRESS
 // ======================================================
 
-// Open modal to enter city name
-function openCityModal(event) {
+// Open modal to enter address
+function openAddressModal(event) {
     event.preventDefault();
 
-    $("#changeCityModal").show();
-    $("#modal-cityName").focus();
+    $("#searchAddressModal").show();
+    $("#modal-address").focus();
 }
 
-// Event handler to close modal and change city
-$("#closeChangeCityModal").on("click", function(event) {
+// Event handler to close modal and search address
+$("#closeAddressModal").on("click", function(event) {
     event.preventDefault();
 
-    var city = $("#modal-cityName").val().trim();
-    $("#modal-cityName").val("");
+    var address = $("#modal-address").val().trim();
+    $("#modal-address").val("");
 
-    if (city != null && city != "") {
-        $("#changeCityModal").hide();
-        changeCity(city);
+    if (address != null && address != "") {
+        $("#searchAddressModal").hide();
+        changeAddress(address);
     }
     else {
         alert("Please enter a name for this route.");
     }
 });
 
-// Event handler to cancel and close modal without changing city
-$("#cancelChangeCityModal").on("click", function(event) {
+// Event handler to cancel and close modal without searching address
+$("#cancelAddressModal").on("click", function(event) {
     event.preventDefault();
     
-    $("#modal-cityName").val("");
-    $("#changeCityModal").hide();
+    $("#modal-address").val("");
+    $("#searchAddressModal").hide();
 });
 
-// Change city
-function changeCity(city) {
+// Change address
+function changeAddress(address) {
     var geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({"address": city}, function(results, status) {
+    geocoder.geocode({"address": address}, function(results, status) {
         if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
-            map.setZoom(13);
+            map.setZoom(15);
         } 
         else {
             alert("Geocode error: " + status);
@@ -325,6 +324,7 @@ function saveRoute(routeName, location) {
         API.saveRoute(newRoute);
 
         setTimeout(setConfirmMsg("save"), 1000);
+        checkShowRoutes();      
     }
 }
 
@@ -412,7 +412,8 @@ function undoLast(event) {
     // If waypoints are emptied, clear markers from map
     if (wayPoints.length == 0) {
         startIcon.setMap(null);
-
+        endIcon.setMap(null);
+        
         toggleMapBoxBtns(true); // disable map control buttons
     }
 
