@@ -280,6 +280,8 @@ function openModal(event) {
     event.preventDefault();
 
     $("#nameRouteModal").show();
+    $("#modal-routeName").val("");
+    $("#modal-location").val("");
     $("#modal-routeName").focus();
 }
 
