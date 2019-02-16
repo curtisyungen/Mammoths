@@ -9,6 +9,17 @@ var startIcon;
 var endIcon;
 var map;
 
+var keys = require("../../keys");
+var API_KEY = keys.API_KEY;
+
+$.ajax({
+    url: `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=drawing&callback=initMap`,
+    method: "GET"
+})
+.then(function(response) {
+    initMap();
+});
+
 // USER INFO ON SIGN IN
 // ========================================
 
@@ -22,6 +33,8 @@ var user = {
 
 // INITIALIZE MAP
 // ======================================================
+
+initMap();
 
 function initMap() {
 
