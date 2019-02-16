@@ -23,8 +23,6 @@ var user = {
 // INITIALIZE MAP
 // ======================================================
 
-initMap();
-
 function initMap() {
 
     // Map style settings
