@@ -2,6 +2,22 @@ a {
   text-decoration: none !important;
 }
 
+html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+#runningForm {
+  height:100%;
+  display:table;
+}
+ .center{
+   display: table-cell;
+   vertical-align:middle;
+ }
+
 #loginPageTitle {
   font-size: 72px;
   font-weight: 700;
