@@ -226,11 +226,13 @@ function showOnlyUser(event) {
             var userId = runData[i].UserId;
 
             // Get Name of runner from ID
-            for (var user in runData) {
-                if (userId == runData[user].id) {
-                    userName = runData[user].name;
-                }
-            }
+            // for (var user in runData) {
+            //     if (userId == runData[user].id) {
+            //         userName = runData[user].name;
+            //     }
+            // }
+
+            userName = user.userName; //**** */ TEMPORARY FIX
 
             // Populate div and display run data
             //***I sure wish there was something that could handle these bars
