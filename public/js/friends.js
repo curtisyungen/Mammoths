@@ -1,3 +1,15 @@
+// USER INFO ON SIGN IN
+// ========================================
+
+var user = {
+    userId: localStorage.getItem("userId"),
+    userEmail: localStorage.getItem("userEmail"),
+    userName: localStorage.getItem("userName"),
+  };
+  
+  // APPEND USER NAME TO THE NAV BAR
+  $("#loggedInUser").append(user.userName)
+
 // GET ALL RUNS API CALL
 // ========================================
 

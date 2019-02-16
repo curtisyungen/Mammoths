@@ -23,8 +23,6 @@ var user = {
   userName: localStorage.getItem("userName"),
 };
 
-console.log("userid" + user.userId);
-
 // APPEND USER NAME TO THE NAV BAR
 $("#loggedInUser").append(user.userName)
 
