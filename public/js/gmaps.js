@@ -293,6 +293,7 @@ $("#closeNameRouteModal").on("click", function(event) {
     if (name != null && name != "") {
         $("#nameRouteModal").hide();
         saveRoute(name, location);
+        clearRoute(event);
     }
     else {
         alert("Please enter a name for this route.");
