@@ -8,6 +8,14 @@ label {
     padding: 15px;
 }
 
+.userNameDiv {
+    float: left;
+}
+
+.userMilesDiv {
+    float: right;
+}
+
 .userTotalMiles {
     background: rgb(51, 0, 122);
     border: 1px solid black;

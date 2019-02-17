@@ -96,9 +96,10 @@ function generateLeaderboard(mileageData) {
             .text(mileageData[user].userName);
         var userMiles = $("<div>")
             .addClass("userMilesDiv")
-            .text((Math.round((mileageData[user].userMiles)*100)/100) + "miles");
+            .text((Math.round((mileageData[user].userMiles)*100)/100) + " miles");
 
         var userTotalMiles = $("<div>")
+            .addClass("userTotalMiles")
             .append(userName)
             .append(userMiles);
 
