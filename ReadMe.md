@@ -29,7 +29,7 @@ The app uses [Google sign-in](https://developers.google.com/identity/sign-in/web
 1. After cloning this repo run `npm install` to install all dependencies. 
 2. We use sequelize to setup and connect to MySQL database. 
 3. Inside a folder `config` there is a sequelize `config.js` file. Open it and update the development object with your MySQL password.
-4. Inside your terminal or Bash window run `node server` and navigate to `localhost:3030` to view the app.
+4. Inside your terminal or Bash window run `node server` and navigate to `localhost:3000` to view the app.
 
 ### Future development
 Our team is currently working on improving current functionalities and adding a few more. Checkout this [issue](https://github.com/vaheminasyan2/Mammoths/issues/60) to see what is in our road map. 
