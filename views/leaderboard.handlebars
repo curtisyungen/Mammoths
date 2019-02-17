@@ -42,25 +42,17 @@
         </header>
     </div>
 
-    {{!-- View Filter Buttons --}}
-    <div id="viewFilterBtns">
-        <a class="viewRunFilter btn btn-dark" id="onlyMe">Only Me</a>
-        <a class="viewRunFilter btn btn-dark" id="showAllRuns">Show All</a>
-    </div>
+    {{!-- Leaderboard Title --}}
+    <div id="leaderboardTitle">Leaderboard</div>
+    <div id="leaderboardSubtitle">Total Miles Ran</div>
 
     {{!-- Body --}}
     <div class="hero-body">
-        
-        <div class="columns">
 
-            {{!-- First Column --}}
-            
-            <div class="column is-one-half" id="allRunsList"></div>
+        <div id="leaderboardContainer">
 
-            {{!-- Second Column --}}
-
-            <div class="column is-one-third" id="map2">Map2</div>
-
+            {{!-- Leaderboard --}}
+            <div id="leaderboard" name="leaderboard"></div>
         </div>
     </div>
 
@@ -82,11 +74,7 @@
 
 {{!-- Javascript, Jquery --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/post-activity.js"></script>
-<script src="/js/viewRuns.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB66kReNVkNXq1PYpmqbsmNUfrGWVx0pVg&libraries=drawing&callback=initViewRunsMap"
-    async defer></script>
+<script src="/js/leaderboard.js"></script>
 
 
 

@@ -14,7 +14,7 @@ module.exports = function (app) {
       where: { UserId: req.params.id },
       order: [["date", "DESC"]]
     }).then(function (dbRuns) {
-      console.log(dbRuns);
+      //console.log(dbRuns);
       res.json(dbRuns);
     });
   });

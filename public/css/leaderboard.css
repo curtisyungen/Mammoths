@@ -1,0 +1,49 @@
+label {
+    margin-right: 10px;
+}
+
+#summaryData {
+    padding: 15px;
+}
+
+.userNameDiv {
+    float: left;
+}
+
+.userMilesDiv {
+    float: right;
+}
+
+.userTotalMiles {
+    background: rgb(51, 0, 122);
+    border: 1px solid black;
+    font-size: 18px;
+    height: 48px;
+    margin: 0px auto 5px auto;
+    padding: 10px;
+    width: 400px;
+}
+
+.userTotalMiles:hover {
+    background: gold;
+    color: black;
+}
+
+#leaderboardTitle {
+    font-size: 48px;
+    text-align: center;
+    width: 100%;
+}
+
+#leaderboardSubtitle {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+#leaderboardContainer {
+    max-height: 420px;
+    overflow-y: scroll;
+    text-align: center;
+    width: 100%;
+}

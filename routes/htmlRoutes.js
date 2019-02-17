@@ -12,8 +12,8 @@ module.exports = function (app) {
     res.render("index")
   });
 
-  app.get("/friends", function(req, res) {
-    res.render("friends");
+  app.get("/leaderboard", function(req, res) {
+    res.render("leaderboard");
   });
 
   // Contact Page
