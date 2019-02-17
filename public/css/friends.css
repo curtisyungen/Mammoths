@@ -3,8 +3,6 @@ label {
 }
 
 #summaryData {
-    max-height: 400px;
-    overflow-y: scroll;
     padding: 15px;
 }
 
@@ -44,7 +42,7 @@ label {
 }
 
 #leaderboardContainer {
-    max-height: 400px;
+    max-height: 420px;
     overflow-y: scroll;
     text-align: center;
     width: 100%;
