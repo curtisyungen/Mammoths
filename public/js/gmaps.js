@@ -18,8 +18,6 @@ var user = {
     userName: localStorage.getItem("userName"),
 };
 
-//console.log("userid" + user.userId);
-
 // INITIALIZE MAP
 // ======================================================
 
@@ -173,7 +171,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, wayPoint
         travelMode: 'WALKING'
     },
         function (response, status) {
-            //console.log(response);
 
             // Sum up the distance (in meters) of each leg of route
             for (var i = 0; i < response.routes[0].legs.length; i++) {
@@ -369,7 +366,6 @@ function loadRoute() {
     }
 
     API.loadRoute(route).then(function (response) {
-        console.log("Loading...");
 
         // Get stored waypoints for route
         wayPoints = JSON.parse(response.wayPoints);

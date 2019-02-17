@@ -41,7 +41,7 @@ var refreshRuns = function () {
       console.log(run);
       var $recentRun = $("<div class='recentRunDiv'>").html(
         `<td class='dataSpan'>${run.date}</td>` +
-        `<td class='dataSpan'>${run.distance} miles</td>` +
+        `<td class='dataSpan'>${run.distance} mi.</td>` +
         `<td class='dataSpan'>${run.duration}</td>` +
         `<td class='dataSpan'>${run.location}</td>`
       );
