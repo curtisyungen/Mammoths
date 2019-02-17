@@ -142,6 +142,9 @@ function getRoutePoints() {
     // Hide all delete buttons 
     $(deleteBtn).hide();
 
+    // Clear map of route
+    clearMap();
+
     // Change color of div to show selected run
     $(".runDiv").css("background", "white");
     $(this).css("background", "orange");
