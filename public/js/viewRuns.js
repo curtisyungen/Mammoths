@@ -190,9 +190,6 @@ function getRoutePoints() {
 function deleteRun(event) {
     event.preventDefault();
 
-    console.log("Show All Runs: " + $("#showAllRuns").attr("data-selected"));
-    console.log("Only Me: " + $("#onlyMe").attr("data-selected"));
-
     var runId = $(this).parent().attr("data-runId");
 
     $.ajax({
@@ -207,13 +204,14 @@ function deleteRun(event) {
             // Clear map of current route
             clearMap();
 
-            // Refresh runs list
-            if ($("#onlyMe").attr("data-selected") == true) {
-                showOnlyUser(event);
-            }
-            else if ($("#showAllRuns").attr("data-selected") == true) {
-                viewAllRuns();
-            }
+            // // Refresh runs list
+            // if ($("#onlyMe").attr("data-selected") == true) {
+            //     showOnlyUser(event);
+            // }
+            // else if ($("#showAllRuns").attr("data-selected") == true) {
+            //     viewAllRuns();
+            // }
+            viewAllRuns();
         });
 }
 
@@ -222,7 +220,6 @@ function deleteRun(event) {
 
 $("#onlyMe").on("click", showOnlyUser);
 $("#showAllRuns").on("click", viewAllRuns);
-
 
 function showOnlyUser(event) {
     event.preventDefault();
