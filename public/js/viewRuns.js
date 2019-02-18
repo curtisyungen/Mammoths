@@ -27,9 +27,18 @@ var user = {
 // Gets all run entries from database
 function viewAllRuns() {
 
-    $("#onlyMe").attr("data-selected", false);
-    $("#showAllRuns").attr("data-selected", true);
+    // Change colors to indicate selected button
+    $("#onlyMe")
+        .attr("data-selected", "false")
+        .css("background", "rgb(51, 67, 63)")
+        .css("color", "white");
 
+    $("#showAllRuns")
+        .attr("data-selected", "true")
+        .css("background", "gold")
+        .css("color", "black");
+
+    // Get and return all runs in database
     $.ajax({
         url: "/viewAllRuns",
         method: "GET"
@@ -204,14 +213,19 @@ function deleteRun(event) {
             // Clear map of current route
             clearMap();
 
-            // // Refresh runs list
-            // if ($("#onlyMe").attr("data-selected") == true) {
-            //     showOnlyUser(event);
-            // }
-            // else if ($("#showAllRuns").attr("data-selected") == true) {
-            //     viewAllRuns();
-            // }
-            viewAllRuns();
+            // Refresh runs list
+            if ($("#onlyMe").attr("data-selected") == "true") {
+                showOnlyUser(event);
+                console.log("Only Me");
+            }
+            else if ($("#showAllRuns").attr("data-selected") == "true") {
+                viewAllRuns();
+                console.log("Show All Runs");
+            }
+            else {
+                console.log("Else");
+                viewAllRuns();
+            }
         });
 }
 
@@ -223,9 +237,17 @@ $("#showAllRuns").on("click", viewAllRuns);
 
 function showOnlyUser(event) {
     event.preventDefault();
+    
+    // Change colors to indicate selected button
+    $("#showAllRuns")
+        .attr("data-selected", "false")
+        .css("background", "rgb(51, 67, 63)")
+        .css("color", "white");
 
-    $("#onlyMe").attr("data-selected", true);
-    $("#showAllRuns").attr("data-selected", false);
+    $("#onlyMe")
+        .attr("data-selected", "true")
+        .css("background", "gold")
+        .css("color", "black");
 
     $.ajax({
         url: "/api/runs/" + user.userId,
