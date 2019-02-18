@@ -230,7 +230,8 @@ function showOnlyUser(event) {
             // Add run ID for run deletion function
             runDiv = $("<div>").addClass("runDiv")
                 .attr("data-routeId", runData[i].RouteId)
-                .attr("data-runId", runData[i].id);
+                .attr("data-runId", runData[i].id)
+                .attr("data-userId", runData[i].UserId);
 
             // Get ID of user who entered each run
             var userId = runData[i].UserId;
