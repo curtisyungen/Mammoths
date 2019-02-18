@@ -150,7 +150,7 @@ function getRoutePoints() {
     $(this).css("background", "orange");
 
     // Add delete button to run div
-    if ($(this).attr("data-userId") == userId) {
+    if ($(this).attr("data-userId") == user.userId) {
         deleteBtn = $("<a class='btn btn-danger delete deleteRun'>").text("delete");
         $(this).append(deleteBtn);
     }
