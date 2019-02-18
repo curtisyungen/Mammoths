@@ -100,7 +100,8 @@ function displayAllRunsList(runData) {
                 // Add run ID for run deletion function
                 runDiv = $("<div>").addClass("runDiv")
                     .attr("data-routeId", runData[i].RouteId)
-                    .attr("data-runId", runData[i].id);
+                    .attr("data-runId", runData[i].id)
+                    .attr("data-userId", runData[i].UserId);
 
                 // Get ID of user who entered each run
                 var userId = runData[i].UserId;
@@ -149,9 +150,11 @@ function getRoutePoints() {
     $(this).css("background", "orange");
 
     // Add delete button to run div
-    deleteBtn = $("<a class='btn btn-danger delete deleteRun'>").text("delete");
-    $(this).append(deleteBtn);
-
+    if ($(this).attr("data-userId") == userId) {
+        deleteBtn = $("<a class='btn btn-danger delete deleteRun'>").text("delete");
+        $(this).append(deleteBtn);
+    }
+    
     var routeId = $(this).attr("data-routeId");
 
     $.ajax({

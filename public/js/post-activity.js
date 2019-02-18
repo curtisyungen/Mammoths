@@ -36,9 +36,7 @@ var refreshRuns = function () {
       type: "GET"
     })
   .then(function (data) {
-    //console.log(data);
     var $runs = data.map(function (run) {
-      console.log(run);
       var $recentRun = $("<div class='recentRunDiv'>").html(
         `<td class='dataSpan'>${run.date}</td>` +
         `<td class='dataSpan'>${run.distance} mi.</td>` +
@@ -209,7 +207,6 @@ var handleFormSubmit = function (event) {
     url: "api/runs",
     data: JSON.stringify(run)
   }).then(function () {
-    //console.log(response);
     refreshRuns();
   });
   
