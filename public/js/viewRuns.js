@@ -208,7 +208,7 @@ function deleteRun(event) {
             clearMap();
 
             // Refresh runs list
-            if ($("#onlyMe").attr("data-selected")) {
+            if ($("#onlyMe").attr("data-selected") == true) {
                 console.log("Only Me");
                 showOnlyUser(event);
             }
