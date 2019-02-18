@@ -26,6 +26,10 @@ var user = {
 
 // Gets all run entries from database
 function viewAllRuns() {
+
+    $("#onlyMe").attr("data-selected", false);
+    $("#showAllRuns").attr("data-selected", true);
+
     $.ajax({
         url: "/viewAllRuns",
         method: "GET"
@@ -118,7 +122,7 @@ function displayAllRunsList(runData) {
                 runDiv.html(
                     `<td class="dataSpan">${userName}</td>` +
                     `<td class="dataSpan">${runData[i].date}</td>` +
-                    `<td class="dataSpan">${runData[i].distance} miles</td>` +
+                    `<td class="dataSpan">${runData[i].distance} mi.</td>` +
                     `<td class="dataSpan">${runData[i].duration}</td>` +
                     `<td class="dataSpan">${runData[i].location}</td>` +
                     `<td class="dataSpan">${runData[i].surface}</td>`
@@ -183,7 +187,12 @@ function getRoutePoints() {
 // DELETE RUN FROM DATABASE
 // ======================================================
 
-function deleteRun() {
+function deleteRun(event) {
+    event.preventDefault();
+
+    console.log("Show All Runs: " + $("#showAllRuns").attr("data-selected"));
+    console.log("Only Me: " + $("#onlyMe").attr("data-selected"));
+
     var runId = $(this).parent().attr("data-runId");
 
     $.ajax({
@@ -199,7 +208,12 @@ function deleteRun() {
             clearMap();
 
             // Refresh runs list
-            viewAllRuns();
+            if ($("#onlyMe").attr("data-selected")) {
+                showOnlyUser(event);
+            }
+            else if ($("#showAllRuns").attr("data-selected")) {
+                viewAllRuns();
+            }
         });
 }
 
@@ -209,8 +223,12 @@ function deleteRun() {
 $("#onlyMe").on("click", showOnlyUser);
 $("#showAllRuns").on("click", viewAllRuns);
 
+
 function showOnlyUser(event) {
     event.preventDefault();
+
+    $("#onlyMe").attr("data-selected", true);
+    $("#showAllRuns").attr("data-selected", false);
 
     $.ajax({
         url: "/api/runs/" + user.userId,
