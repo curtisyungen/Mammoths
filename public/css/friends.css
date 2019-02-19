@@ -1,4 +1,4 @@
-#friendsList {
+#usersOnSite {
     border: 1px solid black;
     height: 200px;
 }
@@ -6,4 +6,30 @@
 #friendsInfo {
     border: 1px solid black;
     height: 200px;
+}
+
+#findFriend {
+    margin-left: 30px;
+}
+
+#findFriendTextbox {
+    width: 250px;
+}
+
+.addFriendBtn {
+    float: right;
+    font-size: 12px;
+    height: 28px;
+    margin-top: -2px;
+    padding: 2px;
+}
+
+.userDiv {
+    background: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    margin: 5px 0px 0px 0px;
+    padding: 5px;
+    width: 100%;
 }
