@@ -120,9 +120,17 @@ button {
     }
 
     #map {
-        clear: both;
-        float: left;
+        height: 100%;
         position: relative;
+    }
+
+    #mapControl {
+        background: rgb(87, 87, 87);
+        border: 1px solid black;
+        color: white;
+        left: 10px;
+        padding: 5px 0px 5px 0px;
+        text-align: center;
         z-index: 99;
     }
 }
