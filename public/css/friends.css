@@ -31,5 +31,10 @@
     color: black;
     margin: 5px 0px 0px 0px;
     padding: 5px;
+    padding-left: 10px;
     width: 100%;
+}
+
+.userDiv:hover {
+    background: lightgreen;
 }
