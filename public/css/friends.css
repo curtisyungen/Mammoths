@@ -38,7 +38,7 @@
 }
 
 .userDiv:hover {
-    background: lightgreen;
+    background: rgb(255, 205, 255);
 }
 
 .requestedBtn {
