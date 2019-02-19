@@ -131,11 +131,16 @@ button {
         border: 1px solid black;
         color: white;
         margin-bottom: 50px;
-        margin-top: -35px;
+        margin-top: -45px;
         padding: 5px 0px 5px 0px;
         position: relative;
         text-align: center;
         width: 290px;
+    }
+
+    .mapButton {
+        font-size: 14px;
+        width: 100%;
     }
 
     #wrapper {
