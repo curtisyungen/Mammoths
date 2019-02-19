@@ -199,6 +199,7 @@ function getRoutePoints() {
 function deleteRun(event) {
     event.preventDefault();
 
+    // Ask user to confirm deletion request
     if (!confirm("Delete this run?")) { return; };
 
     var runId = $(this).parent().attr("data-runId");

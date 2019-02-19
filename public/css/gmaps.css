@@ -109,3 +109,20 @@ button {
     height: 100%;
     position: relative;
 }
+
+@media screen and (max-width: 768px) {
+    #runningForm {
+        padding: 15px;
+    }
+
+    .duration {
+        width: 25%;
+    }
+
+    #map {
+        clear: both;
+        float: left;
+        position: relative;
+        z-index: 99;
+    }
+}
