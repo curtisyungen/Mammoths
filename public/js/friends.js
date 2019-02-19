@@ -35,7 +35,6 @@ function displayAllUsers(userList) {
 
         $("#usersOnSite").append(userDiv);
     }
-
 }
 
 // SEND FRIEND REQUEST
