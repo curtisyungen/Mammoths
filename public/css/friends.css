@@ -1,11 +1,13 @@
 #usersOnSite {
     border: 1px solid black;
-    height: 200px;
+    height: 400px;
+    overflow: scroll;
 }
 
 #friendsInfo {
     border: 1px solid black;
-    height: 200px;
+    height: 400px;
+    overflow: scroll;
 }
 
 #findFriend {
