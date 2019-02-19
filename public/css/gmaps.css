@@ -121,9 +121,10 @@ button {
 
     #map {
         height: 250px;
-        margin-left: 50%;
+        margin-left: auto;
+        margin-right: auto;
         position: relative;
-        width: 250px;
+        width: 300px;
     }
 
     #mapControl {
@@ -131,9 +132,9 @@ button {
         border: 1px solid black;
         color: white;
         padding: 5px 0px 5px 0px;
-        position: relative;
+        position: absolute;
         text-align: center;
-        width: 120px;
+        width: 100%;
     }
 
     #wrapper {
