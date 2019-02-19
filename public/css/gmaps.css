@@ -120,21 +120,22 @@ button {
     }
 
     #map {
-        height: 250px;
-        margin-left: auto;
-        margin-right: auto;
+        height: 350px;
+        margin-left: 10px;
         position: relative;
-        width: 300px;
+        width: 290px;
     }
 
     #mapControl {
         background: rgb(87, 87, 87);
         border: 1px solid black;
         color: white;
+        margin-bottom: 50px;
+        margin-top: -35px;
         padding: 5px 0px 5px 0px;
         position: relative;
         text-align: center;
-        width: 100%;
+        width: 290px;
     }
 
     #wrapper {
