@@ -26,7 +26,7 @@ function displayAllUsers(userList) {
             .text(userList[user].name);
 
         var addFriendBtn = $("<button>")
-            .addClass("addFriendBtn btn btn-success")
+            .addClass("addFriendBtn btn btn-primary")
             .attr("data-userId", userList[user].id)
             .attr("data-requested", "false")
             .text("Add Friend");
@@ -49,7 +49,7 @@ function requestFriend(event) {
 
     if ($(this).attr("data-requested") == "false") {
         $(this)
-            .removeClass("btn btn-success")
+            .removeClass("btn btn-primary")
             .addClass("requestedBtn")
             .attr("data-requested", "true")
             .text("Request Sent");
@@ -57,7 +57,7 @@ function requestFriend(event) {
     else {
         $(this)
             .removeClass("requestedBtn")
-            .addClass("btn btn-success")
+            .addClass("btn btn-primary")
             .attr("data-requested", "false")
             .text("Add Friend");
     }
