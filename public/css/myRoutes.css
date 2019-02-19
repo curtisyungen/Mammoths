@@ -1,0 +1,19 @@
+.routeDiv {
+    background: white;
+    border: 1px solid black;
+    border-radius: 12px;
+    color: black;
+    font-size: 14px;
+    height: 35px;
+    margin: 5px 0px 5px 0px;
+    padding: 5px 10px 5px 10px;
+    width: 100%;
+}
+
+.routeDiv:first-child {
+    margin-top: -12px;
+}
+
+.routeDiv:hover {
+    background: orange !important;
+}

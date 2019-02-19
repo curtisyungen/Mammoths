@@ -63,6 +63,18 @@ module.exports = function (app) {
     });
   });
 
+  // Get all user's routes
+  app.get("/api/getMyRoutes/:id", function(req, res) {
+    db.Routes.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    })
+      .then(function(response) {
+        return res.json(response);
+      });
+  });
+
   // ==========================================
   // POST
   // ==========================================

@@ -49,17 +49,18 @@
         </header>
     </div>
 
-    {{!-- Leaderboard Title --}}
-    <div id="leaderboardTitle">Leaderboard</div>
-    <div id="leaderboardSubtitle">Total Miles Ran</div>
-
     {{!-- Body --}}
     <div class="hero-body">
+        <div class="columns">
 
-        <div id="leaderboardContainer">
+            {{!-- First Column --}}
 
-            {{!-- Leaderboard --}}
-            <div id="leaderboard" name="leaderboard"></div>
+            <div class="column is-one-half" id="myRoutesList"></div>
+
+            {{!-- Second Column --}}
+
+            <div class="column is-one-third" id="routesMap"></div>
+
         </div>
     </div>
 
@@ -81,7 +82,11 @@
 
 {{!-- Javascript, Jquery --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/leaderboard.js"></script>
+<script src="/js/myRoutes.js"></script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB66kReNVkNXq1PYpmqbsmNUfrGWVx0pVg&libraries=drawing&callback=initViewRoutesMap"
+    async defer></script>
 
 
 

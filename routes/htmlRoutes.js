@@ -12,6 +12,7 @@ module.exports = function (app) {
     res.render("index")
   });
 
+  // Leaderboard Page
   app.get("/leaderboard", function(req, res) {
     res.render("leaderboard");
   });
@@ -30,6 +31,11 @@ module.exports = function (app) {
   app.get("/terms", function(req, res) {
     res.render("terms");
   })
+
+  // My Routes Page
+  app.get("/myRoutes", function(req, res) {
+    res.render("myRoutes");
+  });
 
   // Load example page and pass in an example by id
   app.get("/runs/:id", function (req, res) {
