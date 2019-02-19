@@ -132,12 +132,12 @@ button {
         border: 1px solid black;
         color: white;
         padding: 5px 0px 5px 0px;
-        position: absolute;
+        position: relative;
         text-align: center;
         width: 100%;
     }
 
     #wrapper {
-        position: absolute;
+        position: relative;
     }
 }
