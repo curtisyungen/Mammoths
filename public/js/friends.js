@@ -11,11 +11,13 @@ function getAllUsers() {
         });
 }
 
+getAllUsers();
+
 // DISPLAY LIST OF ALL USERS ON SITE
 // ======================================================
 
 function displayAllUsers(userList) {
-    // console.log(userList);
+    //console.log(userList);
 
     for (var user in userList) {
 
@@ -25,6 +27,8 @@ function displayAllUsers(userList) {
 
         var addFriendBtn = $("<button>")
             .addClass("addFriendBtn btn btn-success")
+            .attr("data-userId", userList[user].id)
+            .attr("data-requested", "false")
             .text("Add Friend");
 
         userDiv.append(addFriendBtn);
@@ -34,4 +38,28 @@ function displayAllUsers(userList) {
 
 }
 
-getAllUsers();
+// SEND FRIEND REQUEST
+// ======================================================
+
+$("#usersOnSite").on("click", ".addFriendBtn", requestFriend);
+
+function requestFriend(event) {
+    event.preventDefault();
+
+    // var thisUserId = $(this).attr("data-userId");
+
+    if ($(this).attr("data-requested") == "false") {
+        $(this)
+            .removeClass("btn btn-success")
+            .addClass("requestedBtn")
+            .attr("data-requested", "true")
+            .text("Request Sent");
+    }
+    else {
+        $(this)
+            .removeClass("requestedBtn")
+            .addClass("btn btn-success")
+            .attr("data-requested", "false")
+            .text("Add Friend");
+    }
+}

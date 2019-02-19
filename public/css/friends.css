@@ -38,3 +38,9 @@
 .userDiv:hover {
     background: lightgreen;
 }
+
+.requestedBtn {
+    background: lightgray;
+    border: 1px solid rgb(148, 148, 148);
+    color: rgb(104, 104, 104);
+}
