@@ -37,6 +37,11 @@ module.exports = function (app) {
     res.render("myRoutes");
   });
 
+  // Friends Page
+  app.get("/friends", function(req, res) {
+    res.render("friends");
+  });
+
   // Load example page and pass in an example by id
   app.get("/runs/:id", function (req, res) {
     db.Runs.findOne({ where: { id: req.params.id } }).then(function (dbRun) {
