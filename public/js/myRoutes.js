@@ -1,3 +1,9 @@
+// TO ADD
+// Delete route functionality
+// Edit route functionality
+// Filter routes -- distance, terrain, location
+// Share route with friends
+
 // GLOBALS
 // ======================================================
 
