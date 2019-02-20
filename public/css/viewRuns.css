@@ -77,4 +77,27 @@ padding: 0;
     margin-top: -20px;
 }
 
+@media screen and (max-width: 768px) {
+    .runDiv {
+        height: 50px;
+        margin-left: 12px;
+        width: 387px;
+    }
+
+    #map2 {
+        height: 350px;
+        margin-left: 24px;
+        position: relative;
+        width: 387px;
+    }
+
+    .hero-body {
+        padding: 0px;
+    }
+
+    #runningForm {
+        margin-left: 10px;
+        width: 387px;
+    }
+}
 

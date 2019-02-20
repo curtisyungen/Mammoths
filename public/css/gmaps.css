@@ -112,18 +112,19 @@ button {
 
 @media screen and (max-width: 768px) {
     #runningForm {
-        padding: 15px;
+        padding: 10px;
+        width: 387px;
     }
 
     .duration {
-        width: 25%;
+        width: 32%;
     }
 
     #map {
         height: 350px;
         margin-left: 10px;
         position: relative;
-        width: 290px;
+        width: 387px;
     }
 
     #mapControl {
@@ -135,7 +136,7 @@ button {
         padding: 5px 0px 5px 0px;
         position: relative;
         text-align: center;
-        width: 290px;
+        width: auto;
     }
 
     .mapButton {
@@ -145,5 +146,10 @@ button {
 
     #wrapper {
         position: relative;
+    }
+
+    #yourRecentRuns {
+        margin-left: 0px;
+        margin-right: -22px;
     }
 }
