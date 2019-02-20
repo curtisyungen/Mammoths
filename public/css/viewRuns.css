@@ -99,5 +99,9 @@ padding: 0;
         margin-left: 10px;
         width: 387px;
     }
+
+    #allRunsList {
+        margin-top: 50px;
+    }
 }
 
