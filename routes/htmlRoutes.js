@@ -34,12 +34,12 @@ module.exports = function (app) {
 
   // My Routes Page
   app.get("/myRoutes", function(req, res) {
-    res.render("myRoutes");
+    res.render("index"); // My Routes page not complete. Render index for now.
   });
 
   // Friends Page
   app.get("/friends", function(req, res) {
-    res.render("friends");
+    res.render("index"); // Friends page not complete. Render index for now.
   });
 
   // Load example page and pass in an example by id
